@@ -4,30 +4,50 @@
 <head>
     <meta charset="UTF-8">
     <title>Sign Up</title>
+    <link rel="stylesheet" href="main.css">
 </head>
 
 <body>
-<a href="https://www.google.fr">Accéder à la recherche</a>
-<img src="203897-full.png">
+<p>
 
 <form method="post">
-    Email :<input name="email" type="text" required="required" placeholder="email@domain.com"/>
-    <br>
-    Mot de passe :<input name="mdp" type="password" required="required"/>
-    <br>
-    Prénom :<input name="prenom" type="text"/>
-    <br>
-    Nom :<input name="nom" type="text"/>
+
+    <label for="email">Email : </label>
+    <input name="email" id="email" type="text" required="required" placeholder="email@domain.com"/>
+
     <br>
 
 
-    Clique si tu valides Kaarism : <input name="cursed_cb" type="checkbox"/>
+    <label for="mdp">Mot de passe : </label>
+    <input name="mdp" id="mdp" type="password" required="required"/>
+
     <br>
-    <input name="submit_simp" type="submit" value="If U cLiCk U SiMp"/>
+
+    <label for="prenom">Prenom : </label>
+    <input name="prenom" id="prenom" type="text"/>
+
     <br>
-    Date de naissance : <input name ="datedenatisssance" type="date" />
+
+
+    <label for="nom">Nom : </label>
+    <input name="nom" id="nom" type="text"/>
+
     <br>
-    Avatar : <input type="file"/>
+
+    <label for="date_de_naissance">Date de naissance : </label>
+    <input name="date" id="date_de_naissance" type="date"/>
+
+    <br>
+
+    <label for="submit"></label>
+    <input name="submit" id="submit" class="submit-b" type="submit" value="Submit"/>
+
+    <br>
+    <!--Clique si tu valides Kaarism : <input name="cursed_cb" type="checkbox"/>
+    <br>
+
+
+    Avatar : <input type="file"/>-->
 </form>
 
 
@@ -35,4 +55,3 @@
 
 </body>
 </html>
-
