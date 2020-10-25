@@ -11,7 +11,7 @@
 <img src="logo.png" alt="Un magnifique logo" width="257" height="110">
 <p>
 
-<form method="post">
+<form method="post" action="signup.php">
 
     <label for="email">Email : </label>
     <input name="email" id="email" type="text" required="required" placeholder="email@domain.com"/>
@@ -25,18 +25,36 @@
     <br>
 
     <label for="prenom">Prenom : </label>
-    <input name="prenom" id="prenom" type="text"/>
+    <input name="prenom" id="prenom" type="text" required="required"/>
 
     <br>
 
 
     <label for="nom">Nom : </label>
-    <input name="nom" id="nom" type="text"/>
+    <input name="nom" id="nom" type="text" required="required"/>
 
     <br>
 
-    <label for="date_de_naissance">Date de naissance : </label>
-    <input name="date" id="date_de_naissance" type="date"/>
+
+    <label for="adresse">Adresse : </label>
+    <input name="adresse" id="adresse" type="text" required="required"/>
+
+    <br>
+
+    <label for="born_date">Date de naissance : </label>
+    <input name="born_date" id="born_date" type="date" required="required"/>
+
+    <br>
+
+
+    <label for="tel">Telephone :   </label>
+    <input name="tel" id="tel" type="text" required="required"/>
+
+    <br>
+
+
+    <label for="lnk">Profil Linkdin : </label>
+    <input name="lnk" id="lnk" type="text" required="required"/>
 
     <br>
 
@@ -52,7 +70,8 @@
 </form>
 
 
-</p>
+
+
 
 </body>
 </html>
