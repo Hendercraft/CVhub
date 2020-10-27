@@ -2,6 +2,38 @@ body{
     background-color: black;
 }
 
+p{
+    color: white;
+    font-family: Gotham,Arial,Helvetica,sans-serif;
+}
+
+a:link {
+    color: #FD9801;
+    text-decoration: none;
+    font-family: Gotham,Arial,Helvetica,sans-serif;
+}
+
+/* visited link */
+a:visited {
+    color: #FD9801;
+    text-decoration: none;
+    font-family: Gotham,Arial,Helvetica,sans-serif;
+}
+
+/* mouse over link */
+a:hover {
+    color: hotpink;
+    text-decoration: none;
+    font-family: Gotham,Arial,Helvetica,sans-serif;
+}
+
+/* selected link */
+a:active {
+    color: olivedrab;
+    text-decoration: none;
+    font-family: Gotham,Arial,Helvetica,sans-serif;
+}
+
 form{
     color: white;
     font-family: Gotham,Arial,Helvetica,sans-serif;
@@ -25,6 +57,7 @@ input{
     width:100px;
     margin-bottom:10px;
 }
+
 
 .submit-b{
     background-color: #FD9801;
