@@ -1,9 +1,27 @@
 head{
     background-color: white;
 }
+
 body{
-    background-color: white;
+    background-image: url('greyzz.png');
 }
-p3{
-    background-color: rgb(161, 146, 3);
+
+.float-container {
+    border: 3px solid white;
+    padding: 20px;
+    width: 50%;
+}
+
+.child {
+    height: 30%;
+    float: left;
+    padding: 20px;
+    border: 2px solid red;
+}  
+
+.formations{
+    float: right;
+    width: 25%;
+    background-color: yellow;
+    border: 1px outset black;
 }
