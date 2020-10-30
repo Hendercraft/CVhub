@@ -8,14 +8,14 @@ p{
 }
 
 a:link {
-    color: #FD9801;
+    color: #ff9900;
     text-decoration: none;
     font-family: Gotham,Arial,Helvetica,sans-serif;
 }
 
 /* visited link */
 a:visited {
-    color: #FD9801;
+    color: #ff9900;
     text-decoration: none;
     font-family: Gotham,Arial,Helvetica,sans-serif;
 }
