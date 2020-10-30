@@ -43,8 +43,13 @@ set_error_handler(function($number,  $message) {
 });
 
 define('__ROOT__', dirname(__FILE__));
-echo 'http://'.__ROOT__.'/index.html'; //FAIRE GAFFE AU / DIFF ENTRE *nix et windauw
+echo 'http://'.__ROOT__.'\index.html';
 
-require_once(__ROOT__.'/index.html');
+if(strtoupper(substr(PHP_OS, 0, 3)) == 'WIN')
+{
+    require_once(__ROOT__.'\index.html'); //win version
+} else {
+    require_once(__ROOT__.'/index.html'); //win version
+}
 //header('http://'.__ROOT__.'\index.html');
 //phpinfo();
