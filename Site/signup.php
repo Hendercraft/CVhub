@@ -43,8 +43,8 @@ set_error_handler(function($number,  $message) {
 });
 
 define('__ROOT__', dirname(__FILE__));
-echo 'http://'.__ROOT__.'\index.html';
+echo 'http://'.__ROOT__.'/index.html'; //FAIRE GAFFE AU / DIFF ENTRE *nix et windauw
 
-require_once(__ROOT__.'\index.html');
+require_once(__ROOT__.'/index.html');
 //header('http://'.__ROOT__.'\index.html');
 //phpinfo();
