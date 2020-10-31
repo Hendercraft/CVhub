@@ -55,7 +55,7 @@ if($ver = $conn->prepare($verify))
         echo $ver->num_rows;
         $ver->close();
         if ($stmt = $conn->prepare($signup)) {
-            $stmt->bind_param('ssssssds',$nom,$firstname,$adresse,$fborn_date,$email,$mdp,$tel,$lnk);
+            $stmt->bind_param('ssssssss',$nom,$firstname,$adresse,$fborn_date,$email,$mdp,$tel,$lnk);
 
             $stmt->execute();
 
