@@ -44,6 +44,9 @@ if($stmt = $conn->prepare($req) and session_status() === PHP_SESSION_NONE) //Si 
 
         $stmt->bind_result($_SESSION['id'],$_SESSION['nom'],$_SESSION['prenom'],$_SESSION['adresse'],$_SESSION['date'],$_SESSION['email'],$_SESSION['mdp'],$_SESSION['tel'],$_SESSION['lnk']);
         //recupération des résultats de la requête dans les variables de session
+        $stmt->fetch();
+
+        echo $mdp;
         if(password_verify($mdp,$_SESSION['mdp'])) // si le mdp correspond
         {
             $_SESSION['loggedin'] = TRUE;//connecté
