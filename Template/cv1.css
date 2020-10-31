@@ -6,9 +6,12 @@ body{
     background-image: url('greyzz.png');
 }
 
+h1{
+    padding-left: 40%;
+}
+
 .float-container {
-    border: 3px solid white;
-    padding: 20px;
+    padding-left: 25%;
     width: 50%;
 }
 
@@ -16,12 +19,6 @@ body{
     height: 30%;
     float: left;
     padding: 20px;
-    border: 2px solid red;
+    border: 2px solid yellow;
 }  
 
-.formations{
-    float: right;
-    width: 25%;
-    background-color: yellow;
-    border: 1px outset black;
-}
