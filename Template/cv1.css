@@ -1,5 +1,5 @@
 head{
-    background-color: white;
+    background-color: rgb(255, 255, 255);
 }
 
 body{
@@ -13,6 +13,7 @@ h1{
 .float-container {
     padding-left: 25%;
     width: 50%;
+    border: 2px red;
 }
 
 .child {
@@ -21,4 +22,28 @@ h1{
     padding: 20px;
     border: 2px solid yellow;
 }  
+.Contact{
+    border: 2px red;
+    width: 25%;
+    height: 30%;
+}
 
+.i1{
+    top: 0px;
+    left: 0px;
+}
+
+.i2{
+    top: 0px;
+    right: 0px;
+}
+
+.i3{
+    bottom: 0px;
+    left: 0px;
+}
+
+.i4{
+    bottom: 0px;
+    right: 0px;
+}
