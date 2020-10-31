@@ -26,14 +26,18 @@
                 {
                     echo 'You are logged in as '.$_SESSION['nom'] .' ' .$_SESSION['prenom'] ;
                 }
+                else
+                {
+                    session_unset();
+                    session_destroy();
+                    echo 'You are not logged in !';
+
+                }
 
             }
             else
             {
-            session_unset();
-            session_destroy();
             echo 'You are not logged in !';
-
             }
         ?>
     </p>
