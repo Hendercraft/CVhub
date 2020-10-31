@@ -47,7 +47,7 @@ if($ver = $conn->prepare($verify))
     if($ver->num_rows !== 0)
     {
         //echo $ver->num_rows;
-        echo '<h3 style="color:red;">Email déjà utilisé</h3><br>';
+        echo '<h3 style="color:#ff0000;">Email déjà utilisé</h3><br>';
         require_once(SIGNUP_P);
     }
     else
