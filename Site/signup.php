@@ -28,7 +28,7 @@ $fborn_date = date('Y-m-d',strtotime($born_date));
 $sql = "INSERT INTO dbcv.users(nom,prenom,adresse,date_naissance,email,password,telephone,linkdin)
 VALUES ('$nom','$firstname','$adresse','$fborn_date','$email','$mdp',$tel,'$lnk')";
 
-if ($conn->query($sql) === TRUE) {
+if ($conn->query($sql) == TRUE) {
     echo "<br>New record created successfully";
 } else {
     echo "Error: " . $sql . "<br>" . $conn->error;
@@ -42,14 +42,8 @@ set_error_handler(function($number,  $message) {
     echo "Handler captured error $number: '$message'" . PHP_EOL  ;
 });
 
-define('__ROOT__', dirname(__FILE__));
-echo 'http://'.__ROOT__.'\index.html';
 
-if(strtoupper(substr(PHP_OS, 0, 3)) == 'WIN')
-{
-    require_once(__ROOT__.'\index.html'); //win version
-} else {
-    require_once(__ROOT__.'/index.html'); //win version
-}
+require_once(INDEX_P);
+
 //header('http://'.__ROOT__.'\index.html');
 //phpinfo();
