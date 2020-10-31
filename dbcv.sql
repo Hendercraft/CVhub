@@ -2,8 +2,8 @@
 -- version 5.0.2
 -- https://www.phpmyadmin.net/
 --
--- Hôte : 127.0.0.1
--- Généré le : ven. 30 oct. 2020 à 15:00
+-- Hôte : localhost
+-- Généré le : sam. 31 oct. 2020 à 18:11
 -- Version du serveur :  10.4.14-MariaDB
 -- Version de PHP : 7.4.10
 
@@ -123,7 +123,7 @@ CREATE TABLE `users` (
   `adresse` varchar(150) NOT NULL,
   `date_naissance` date NOT NULL,
   `email` varchar(50) NOT NULL,
-  `password` varchar(50) NOT NULL,
+  `password` varchar(255) NOT NULL,
   `telephone` varchar(50) NOT NULL,
   `linkdin` varchar(512) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
@@ -133,13 +133,7 @@ CREATE TABLE `users` (
 --
 
 INSERT INTO `users` (`id`, `nom`, `prenom`, `adresse`, `date_naissance`, `email`, `password`, `telephone`, `linkdin`) VALUES
-(5, 'Driss', 'KIHAL', '4 rue des fromenteaux', '2002-02-20', 'drisskihal@gmail.com', 'test', '766418780', 'dsofhdsoihfodjighoisjfdhsd'),
-(6, 'TEST', 'Test', '4 rue des fromenteaux', '2020-10-05', 'test@gmail.com', 'test', '766418780', 'dsofhdsoihfodjighoisjfdhsd'),
-(8, 'TESTT', 'Testt', '4 rue des fromenteaux', '2020-10-05', 'test2@gmail.com', '$2y$10$ZKrjwUdIofirm5j7QljoteLVG7H3M73vyYRdVz0qlH8', '766418780', 'dsofhdsoihfodjighoisjfdhsd'),
-(9, 'RUFF', 'Guillaume', '12 rue de belfort', '2001-01-28', 'guillaume.ruff@utbm.fr', '$2y$10$N6UOEAbfLZVaIRVqiNTzbu.QZ1rPasO7rjA.f3YaG8O', '665478569', 'guiguilebeaufmlkjgjfj2475'),
-(57, 'TROMBINI', 'Quentin', 'cuisine de agathe', '2020-10-14', 'quentin@love.com', '$2y$10$ay0VDoN.OYSmfRr/ybpck.z0bEBmPYP7ptJX7yKIiZP', '647986532', 'linkdinmoncul'),
-(63, 'TROMBINI', 'Quentin', 'cuisine agathe', '2020-10-01', 'quentin@pute.com', '$2y$10$RYvXSCKu3nIefMV2/Tb55Ols8xxVU.JyNWQPq3i8SoN', '647986532', 'kindsklfhqskjdfhqiudbfhivzbogzyabvufhsk'),
-(64, 'TROMBINI', 'Quentin', 'cuisine agathe', '2020-09-30', 'quentin@pute.com', '$2y$10$ugZAF6Vyf3vOvwnKolmQ1.8FreoLRHTgRR/CXpFYeAn', '647986532', 'linkdinmoncul');
+(1, 'Ruff', 'Guillaume', '28 avenue', '2001-01-18', 'guillaume.ruff@utbm.fr', '$2y$10$hYpkyQ3DT3Mumoy/M4s5nuFgp7974y.BxuI.YwqgWMs09osbSkmIC', '638056525', 'https://www.linkedin.com/in/guillaume-ruff-46b7a2196/');
 
 -- --------------------------------------------------------
 
@@ -267,7 +261,7 @@ ALTER TABLE `universite`
 -- AUTO_INCREMENT pour la table `users`
 --
 ALTER TABLE `users`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=65;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
 
 --
 -- Contraintes pour les tables déchargées
