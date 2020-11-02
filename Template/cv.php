@@ -1,3 +1,4 @@
+<?php header("Content-type: text/css"); ?>
 @import url('https://themes.googleusercontent.com/fonts/css?kit=Yeh3y7ciGQhij8XzUSI-wN9BwJ9QSusUFFTiN987YIbvi2WQbTlLajdXq3UgoDiw');
             ol{
                 margin:0;padding:0
