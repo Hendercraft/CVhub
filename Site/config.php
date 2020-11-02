@@ -30,9 +30,11 @@ if(strtoupper(substr(PHP_OS, 0, 3)) == 'WIN')
     define('INDEX_P',__ROOT__.'\index.html');//win version
     define('SIGNUP_P',__ROOT__.'\signup.html');//win version
     define('UNIVERSITE_P',__ROOT__.'\universite.html');//win version
+    define('ENTERPRISE_P',__ROOT__.'\enterprise.html');//win version
 } else {
     define('LOGIN_P',__ROOT__.'/login.html'); //unix version
     define('INDEX_P',__ROOT__.'/login.html'); //unix version
     define('SIGNUP_P',__ROOT__.'/signup.html');//unix version
     define('UNIVERSITE_P',__ROOT__.'/universite.html');//win version
+    define('ENTERPRISE_P',__ROOT__.'/enterprise.html');//win version
 }

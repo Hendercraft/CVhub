@@ -19,32 +19,32 @@ if( $_POST["uname"] || $_POST["town"] ) {
 
 /**Variables definition**/
 
-$uname = $_POST["uname"]; // Name of the university
-$town = $_POST["town"];  // Town of the given university
+$ename = $_POST["ename"]; // Name of the enterprise
+$town = $_POST["town"];  // Town of the given enterprise
 
 /**Setting up the SQL requests**/
 
-$addUniversity = 'INSERT INTO dbcv.universite(nom,ville) VALUES (?,?)'; // SQL query to write to the db
+$addEnterprise = 'INSERT INTO dbcv.entreprises(nom,ville) VALUES (?,?)'; // SQL query to write to the db
 
-$verify = 'SELECT * from `universite` WHERE `universite`.nom LIKE ?'; //SQL query to check if the university is already in the db
+$verify = 'SELECT * from `entreprises` WHERE `entreprises`.nom LIKE ?'; //SQL query to check if the enterprise is already in the db
 
 
 
 
 if($ver = $conn->prepare($verify)){ //If query was properly prepared
 
-    $ver->bind_param('s',$uname); //Replace the ? with the value the name user provided
+    $ver->bind_param('s',$ename); //Replace the ? with the value the name user provided
     $ver->execute();
     $ver->store_result();
 
-    if($ver->num_rows !== 0) { //If the university already exist in the db
-        echo '<h3 style="color:#ff0000;">Université dejà présente dans la base de données</h3><br>';
-        require_once(UNIVERSITE_P);
+    if($ver->num_rows !== 0) { //If the enterprise already exist in the db
+        echo '<h3 style="color:#ff0000;">L\'entrerpise dejà présente dans la base de données</h3><br>';
+        require_once(ENTERPRISE_P);
 
     }else{
         $ver->close(); //We close the previous request
-        if ($stmt = $conn->prepare($addUniversity)) { //Preparing the query to add the data
-            $stmt->bind_param('ss',$uname,$town);//Binding the parameters
+        if ($stmt = $conn->prepare($addEnterprise)) { //Preparing the query to add the data
+            $stmt->bind_param('ss',$ename,$town);//Binding the parameters
 
             $stmt->execute();
 
@@ -52,7 +52,7 @@ if($ver = $conn->prepare($verify)){ //If query was properly prepared
             $stmt->close();
             require_once(INDEX_P);
         } else {
-            echo "Error: " . $addUniversity . "<br>" . $conn->error;
+            echo "Error: " . $addEnterprise . "<br>" . $conn->error;
         }
     }
 }
@@ -64,5 +64,3 @@ set_error_handler(function($number,  $message) {
 
 }
 );
-
-
