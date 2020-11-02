@@ -26,14 +26,14 @@ $town = $_POST["town"];  // Town of the given enterprise
 
 $addEnterprise = 'INSERT INTO dbcv.entreprises(nom,ville) VALUES (?,?)'; // SQL query to write to the db
 
-$verify = 'SELECT * from `entreprises` WHERE `entreprises`.nom LIKE ?'; //SQL query to check if the enterprise is already in the db
+$verify = 'SELECT * from `entreprises` WHERE `entreprises`.nom LIKE ? AND `entreprises`.ville LIKE ?'; //SQL query to check if the enterprise is already in the db
 
 
 
 
 if($ver = $conn->prepare($verify)){ //If query was properly prepared
 
-    $ver->bind_param('s',$ename); //Replace the ? with the value the name user provided
+    $ver->bind_param('ss',$ename,$town); //Replace the ? with the value the name user provided
     $ver->execute();
     $ver->store_result();
 

@@ -26,14 +26,14 @@ $town = $_POST["town"];  // Town of the given university
 
 $addUniversity = 'INSERT INTO dbcv.universite(nom,ville) VALUES (?,?)'; // SQL query to write to the db
 
-$verify = 'SELECT * from `universite` WHERE `universite`.nom LIKE ?'; //SQL query to check if the university is already in the db
+$verify = 'SELECT * from `universite` WHERE `universite`.nom LIKE ? AND `universite`.ville LIKE ? '; //SQL query to check if the university is already in the db
 
 
 
 
 if($ver = $conn->prepare($verify)){ //If query was properly prepared
 
-    $ver->bind_param('s',$uname); //Replace the ? with the value the name user provided
+    $ver->bind_param('ss',$uname,$town); //Replace the ? with the value the name user provided
     $ver->execute();
     $ver->store_result();
 
