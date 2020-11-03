@@ -1,5 +1,7 @@
-<?php header("Content-type: text/css"); 
-$primar='#ffd556';
+<?php 
+header("Content-type: text/css");
+$primar=$_POST["primar"];
+
 ?>
 @import url('https://themes.googleusercontent.com/fonts/css?kit=Yeh3y7ciGQhij8XzUSI-wN9BwJ9QSusUFFTiN987YIbvi2WQbTlLajdXq3UgoDiw');
             ol{
@@ -9,7 +11,7 @@ $primar='#ffd556';
             .c16{
                 border-right-style:solid;
                 padding:0pt 18pt 14.4pt 18pt;
-                border-bottom-color:<?=$primar?>
+                border-bottom-color:<?=$primar?>;
                 border-top-width:1.5pt;
                 border-right-width:1.5pt;
                 border-left-color:<?=$primar?>;
@@ -344,5 +346,3 @@ $primar='#ffd556';
                 font-style:italic;
                 text-align:center
             }
-
-border-left-color:<?=$primar?>;
