@@ -1,21 +1,21 @@
 body{
-    background-color: black;
+    background-color: white;
 }
 
 p{
-    color: white;
+    color: black;
     font-family: Gotham,Arial,Helvetica,sans-serif;
 }
 
 a:link {
-    color: #ff9900;
+    color: royalblue;
     text-decoration: none;
     font-family: Gotham,Arial,Helvetica,sans-serif;
 }
 
 /* visited link */
 a:visited {
-    color: #ff9900;
+    color: royalblue;
     text-decoration: none;
     font-family: Gotham,Arial,Helvetica,sans-serif;
 }
@@ -35,7 +35,7 @@ a:active {
 }
 
 form{
-    color: white;
+    color: black;
     font-family: Gotham,Arial,Helvetica,sans-serif;
     border: 2px solid darkorange;
     padding: 30px;
@@ -49,12 +49,12 @@ label{
 }
 
 input{
-    color: white;
-    background-color: #363636;
+    color: black;
+    background-color: lightgray;
     font-family: Arial,Helvetica,sans-serif;
     font-size: 16px;
     float:left;
-    width:100px;
+    width:150px;
     margin-bottom:10px;
 }
 

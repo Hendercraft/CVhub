@@ -10,8 +10,8 @@ require_once('config.php'); //Calling config.php in order to keep the link to th
 
 
 /**Checking the data**/
-if( $_POST["uname"] || $_POST["town"] ) {
-    if (preg_match('/\d/', $_POST["uname"]) && preg_match('/\d/', $_POST["town"])) {
+if( $_POST["ename"] || $_POST["town"] ) {
+    if (preg_match('/\d/', $_POST["ename"]) && preg_match('/\d/', $_POST["town"])) {
         die ("invalid name , name should be only composed of letters");
     }
 }
