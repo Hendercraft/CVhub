@@ -1,7 +1,7 @@
 <?php 
 header("Content-type: text/css");
 $primar=$_POST["primar"];
-
+require_once(cv.html);
 ?>
 @import url('https://themes.googleusercontent.com/fonts/css?kit=Yeh3y7ciGQhij8XzUSI-wN9BwJ9QSusUFFTiN987YIbvi2WQbTlLajdXq3UgoDiw');
             ol{
