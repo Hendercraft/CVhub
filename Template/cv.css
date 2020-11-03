@@ -1,6 +1,3 @@
-<?php header("Content-type: text/css"); 
-$primar='#ffd556';
-?>
 @import url('https://themes.googleusercontent.com/fonts/css?kit=Yeh3y7ciGQhij8XzUSI-wN9BwJ9QSusUFFTiN987YIbvi2WQbTlLajdXq3UgoDiw');
             ol{
                 margin:0;padding:0
@@ -9,33 +6,33 @@ $primar='#ffd556';
             .c16{
                 border-right-style:solid;
                 padding:0pt 18pt 14.4pt 18pt;
-                border-bottom-color:<?=$primar?>
+                border-bottom-color:#ffd556;
                 border-top-width:1.5pt;
                 border-right-width:1.5pt;
-                border-left-color:<?=$primar?>;
+                border-left-color:#ffd556;
                 vertical-align:top;
-                border-right-color:<?=$primar?>;
+                border-right-color:#ffd556;
                 border-left-width:0pt;
                 border-top-style:solid;
-                background-color:<?=$primar?>;
+                background-color:#ffd556;
                 border-left-style:solid;
                 border-bottom-width:1.5pt;
                 width:193.5pt;
-                border-top-color:<?=$primar?>;
+                border-top-color:#ffd556;
                 border-bottom-style:solid}.c2{border-right-style:solid;
                 padding:0pt 18pt 14.4pt 18pt;
-                border-bottom-color:<?=$primar?>;
+                border-bottom-color:#ffd556;
                 border-top-width:1.5pt;
                 border-right-width:1.5pt;
                 border-left-color:#000000;
                 vertical-align:top;
-                border-right-color:<?=$primar?>;
+                border-right-color:#ffd556;
                 border-left-width:0pt;
                 border-top-style:solid;
                 border-left-style:solid;
                 border-bottom-width:1.5pt;
                 width:193.5pt;
-                border-top-color:<?=$primar?>;
+                border-top-color:#ffd556;
                 border-bottom-style:solid}.c12{border-right-style:solid;
                 padding:14.4pt 3.6pt 0pt 3.6pt;
                 border-bottom-color:#000000;
@@ -55,10 +52,10 @@ $primar='#ffd556';
             .c21{
                 border-right-style:solid;
                 padding:0pt 18pt 14.4pt 18pt;
-                border-bottom-color:<?=$primar?>;
+                border-bottom-color:#ffd556;
                 border-top-width:1.5pt;
                 border-right-width:0pt;
-                border-left-color:<?=$primar?>;
+                border-left-color:#ffd556;
                 vertical-align:top;
                 border-right-color:#000000;
                 border-left-width:1.5pt;
@@ -66,10 +63,10 @@ $primar='#ffd556';
                 border-left-style:solid;
                 border-bottom-width:1.5pt;
                 width:272.5pt;
-                border-top-color:<?=$primar?>;
+                border-top-color:#ffd556;
                 border-bottom-style:solid}.c20{border-right-style:solid;
                 padding:0pt 18pt 14.4pt 18pt;
-                border-bottom-color:<?=$primar?>;
+                border-bottom-color:#ffd556;
                 border-top-width:0pt;
                 border-right-width:0pt;
                 border-left-color:#000000;
@@ -100,7 +97,7 @@ $primar='#ffd556';
             .c24{
                 border-right-style:solid;
                 padding:0pt 18pt 14.4pt 18pt;
-                border-bottom-color:<?=$primar?>;
+                border-bottom-color:#ffd556;
                 border-top-width:1.5pt;
                 border-right-width:0pt;
                 border-left-color:#000000;
@@ -111,7 +108,7 @@ $primar='#ffd556';
                 border-left-style:solid;
                 border-bottom-width:1.5pt;
                 width:193.5pt;
-                border-top-color:<?=$primar?>;
+                border-top-color:#ffd556;
                 border-bottom-style:solid}.c1{border-right-style:solid;
                 padding:0pt 3.6pt 14.4pt 3.6pt;
                 border-bottom-color:#000000;
@@ -132,7 +129,7 @@ $primar='#ffd556';
                 border-right-width:1.5pt;
                 border-left-color:#000000;
                 vertical-align:top;
-                border-right-color:<?=$primar?>;
+                border-right-color:#ffd556;
                 border-left-width:0pt;
                 border-top-style:solid;
                 border-left-style:solid;
@@ -145,7 +142,7 @@ $primar='#ffd556';
                 border-right-style:solid;border-bottom-color:#000000;
                 border-top-width:0pt;
                 border-right-width:0pt;
-                border-left-color:<?=$primar?>;
+                border-left-color:#ffd556;
                 vertical-align:top;
                 border-right-color:#000000;
                 border-left-width:1.5pt;
@@ -344,5 +341,3 @@ $primar='#ffd556';
                 font-style:italic;
                 text-align:center
             }
-
-border-left-color:<?=$primar?>;
