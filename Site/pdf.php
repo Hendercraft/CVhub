@@ -1,13 +1,18 @@
-<?
-require_once("tcpdf/tcpdf.php");
-    function convert(){
-        require_once("tcpdf/tcpdf.php");
-        $pdf = new PDF();
-        $pdf->AliasNbPages(1);
-        $pdf->SetCreator(CV_HUB);
-        $pdf->SetTitle("my cv");
-        $pdf->SetAuthor("best_amateur_CV");
-        $pdf->setLanguageArray($l);
-        $pdf->Output("my_cv.pdf", "PDF");
-    }
+<?php
+        require 'vendor/autoload.php';
+        require_once 'dompdf/dompdf/autoload.inc.php';
+        // reference the Dompdf namespace
+        use Dompdf\Dompdf;
+
+        // instantiate and use the dompdf class
+        $dompdf = new Dompdf();
+
+        // (Optional) Setup the paper size and orientation
+        $dompdf->setPaper('A4', 'landscape');
+
+        // Render the HTML as PDF
+        $dompdf->render();
+
+        // Output the generated PDF to Browser
+        $dompdf->stream();
 ?>
