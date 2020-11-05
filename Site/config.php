@@ -32,6 +32,7 @@ if(strtoupper(substr(PHP_OS, 0, 3)) == 'WIN')
     define('UNIVERSITE_P',__ROOT__.'\universite.html');//win version
     define('ENTERPRISE_P',__ROOT__.'\enterprise.html');//win version
     define('CV_P',__ROOT__.'\cv.html');//win version
+    define('POSTE_P',__ROOT__.'\poste.html');//win version
 } else {
     define('LOGIN_P',__ROOT__.'/login.html'); //unix version
     define('INDEX_P',__ROOT__.'/login.html'); //unix version
@@ -39,4 +40,6 @@ if(strtoupper(substr(PHP_OS, 0, 3)) == 'WIN')
     define('UNIVERSITE_P',__ROOT__.'/universite.html');//win version
     define('ENTERPRISE_P',__ROOT__.'/enterprise.html');//win version
     define('CV_P',__ROOT__.'/cv.html');//win version
+    define('POSTE_P',__ROOT__.'/poste.html');//win version
+
 }
