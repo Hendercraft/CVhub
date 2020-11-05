@@ -1,4 +1,4 @@
-.lst-kix_list_2-1>
+            .lst-kix_list_2-1>
             li{
                 counter-increment:lst-ctn-kix_list_2-1
             }ol
@@ -559,7 +559,8 @@
             .lst-kix_list_7-0>li:before{content:"\0025cf  "}
             .lst-kix_list_2-2>li{counter-increment:lst-ctn-kix_list_2-2}
             .lst-kix_list_2-6>li:before{content:"" counter(lst-ctn-kix_list_2-6,decimal) ". "}
-            .lst-kix_list_3-7>li{counter-increment:lst-ctn-kix_list_3-7}.lst-kix_list_2-4>li:before{content:"(" counter(lst-ctn-kix_list_2-4,lower-latin) ") "}
+            .lst-kix_list_3-7>li{counter-increment:lst-ctn-kix_list_3-7}
+            .lst-kix_list_2-4>li:before{content:"(" counter(lst-ctn-kix_list_2-4,lower-latin) ") "}
             .lst-kix_list_2-8>li:before{content:"" counter(lst-ctn-kix_list_2-8,lower-roman) ". "}
             .lst-kix_list_7-1>li:before{content:" "}
             .lst-kix_list_7-5>li:before{content:" "}ol
