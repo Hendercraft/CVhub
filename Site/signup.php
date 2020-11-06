@@ -15,20 +15,31 @@ if( $_POST["nom"] || $_POST["prenom"] ) {
 
 }
 $email = $_POST['email'];
+
 $firstname = $_POST['prenom'];
+
 $nom = $_POST['nom'];
+
 $tel = intval($_POST['tel']);
+
 $adresse = $_POST['adresse'];
+
 $lnk = $_POST['lnk'];
+
+$profile_pic = $_POST['img'];
+$fpic = fopen($profile_pic,'r');
+
 $mdp = password_hash($_POST['mdp'],PASSWORD_DEFAULT );
+
+
 $born_date = html_entity_decode($_POST['born_date']);
 $fborn_date = date('Y-m-d',strtotime($born_date));
 
 /*$sql = "INSERT INTO dbcv.users(nom,prenom,adresse,date_naissance,email,password,telephone,linkdin)
 VALUES ('$nom','$firstname','$adresse','$fborn_date','$email','$mdp',$tel,'$lnk')";*/
 
-$signup = 'INSERT INTO dbcv.users(nom,prenom,adresse,date_naissance,email,password,telephone,linkdin)
-VALUES (?,?,?,?,?,?,?,?)';
+$signup = 'INSERT INTO dbcv.users(nom,prenom,adresse,date_naissance,email,password,telephone,linkdin,profile_pic)
+VALUES (?,?,?,?,?,?,?,?,?)';
 
 $verify = 'SELECT * from `users` WHERE `users`.email LIKE ?';
 
@@ -55,8 +66,16 @@ if($ver = $conn->prepare($verify))
         echo $ver->num_rows;
         $ver->close();
         if ($stmt = $conn->prepare($signup)) {
-            $stmt->bind_param('ssssssss',$nom,$firstname,$adresse,$fborn_date,$email,$mdp,$tel,$lnk);
+            $stmt->bind_param('ssssssssb',$nom,$firstname,$adresse,$fborn_date,$email,$mdp,$tel,$lnk,$profile_pic);
 
+            while (!feof($fpic))
+
+            {
+
+                $stmt->send_long_data(8, fread($fpic, 1048576));
+
+            }
+            fclose($fpic);
             $stmt->execute();
 
             //echo "<br>New record created successfully";
