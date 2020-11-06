@@ -1,11 +1,10 @@
 <?php
-        require_once 'dompdf/dompdf/autoload.inc.php';
-        // reference the Dompdf namespace
+        require 'vendor/autoload.php';        // reference the Dompdf namespace
         use Dompdf\Dompdf;
 
         // instantiate and use the dompdf class
         $dompdf = new Dompdf();
-
+        $dompdf->loadHtml('hello world');
         // (Optional) Setup the paper size and orientation
         $dompdf->setPaper('A4', 'landscape');
 
