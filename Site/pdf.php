@@ -1,6 +1,6 @@
 <?php
         require 'vendor/autoload.php';
-        require_once 'dompdf/dompdf/autoload.inc.php';
+        require_once 'dompdfS/dompdf/autoload.inc.php';
         // reference the Dompdf namespace
         use Dompdf\Dompdf;
 
