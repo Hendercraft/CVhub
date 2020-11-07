@@ -49,7 +49,7 @@ echo '<!DOCTYPE html>
 </head>
 
 <body>
-<img src="logo.png" alt="Un magnifique logo" width="257" height="110">
+<img src="img/logo.png" alt="Un magnifique logo" width="257" height="110">
 <p>
 
 <form method="post" action="signup.php">

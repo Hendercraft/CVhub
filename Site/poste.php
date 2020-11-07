@@ -19,14 +19,14 @@ if( $_POST["pname"]) {
 
 /**Variables definition**/
 
-$pname = $_POST["pname"]; // Name of the enterprise
+$pname = $_POST["pname"]; // Name of the poste
 
 
 /**Setting up the SQL requests**/
 
 $addPoste = 'INSERT INTO dbcv.poste(intitule) VALUES (?)'; // SQL query to write to the db
 
-$verify = 'SELECT * from `poste` WHERE `poste`.intitule LIKE ?'; //SQL query to check if the enterprise is already in the db
+$verify = 'SELECT * from `poste` WHERE `poste`.intitule LIKE ?'; //SQL query to check if the poste is already in the db
 
 
 
@@ -37,7 +37,7 @@ if($ver = $conn->prepare($verify)){ //If query was properly prepared
     $ver->execute();
     $ver->store_result();
 
-    if($ver->num_rows !== 0) { //If the enterprise already exist in the db
+    if($ver->num_rows !== 0) {
         echo '<h3 style="color:#ff0000;">Le poste est dejà présent dans la base de données</h3><br>';
         require_once(POSTE_P);
 
