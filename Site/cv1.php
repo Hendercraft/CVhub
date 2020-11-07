@@ -1,12 +1,69 @@
 <?php
 session_start();
-$test = $_SESSION['nom'];
+
+ini_set('display_errors', 1);
+ini_set('log_errors',1);
+error_reporting(E_ALL);
+mysqli_report(MYSQLI_REPORT_ERROR | MYSQLI_REPORT_STRICT);
+
+
+
+require('config.php');
+
+
+$id = $_SESSION['id'];
+
+/*$cmp = 'SELECT intitule FROM competences c INNER JOIN  user_competences uc on c.id = uc.competences_id  WHERE uc.user_id ='.$id;
+$r_cmp[0]='test';
+
+
+if($stmt=$conn->query($cmp))
+{
+    $i=0;
+
+    while($row = $stmt->fetch_row())
+    {
+        $r_cmp[$i] = $row[0];
+
+        $i+=1;
+    }
+}*/
+
+$req[0] = 'SELECT intitule FROM competences c INNER JOIN  user_competences uc on c.id = uc.competences_id  WHERE uc.user_id ='.$id;
+$req[1] = 'SELECT id FROM users';
+$res[0] = 'test';
+$i=0;
+
+foreach ($req as $query)
+{
+    if($stmt = $conn->query($query))
+    {
+        while($row = $stmt->fetch_row())
+        {
+            if(isset($row[0]))
+            {
+                $res[$i]=$row[0];
+                $i+=1;
+            }
+            else
+            {
+                $res[$i]=" ";
+            }
+
+        }
+    }
+}
+
+
+
+
+
 //var_dump($_SESSION['profile_pic']);
 echo '<html>
     <head>
         <meta content="text/html; charset=UTF-8" http-equiv="content-type">
         <link rel="stylesheet" type="text/css"
-        media="screen" href="cv1.css" />
+        media="screen" href="css/cv1.css" />
     </head>
     <body>
         <div class="c32">
@@ -64,7 +121,7 @@ echo '<html>
                                 <span class="c3">'.$_SESSION['adresse'].'</span>
                             </p>
                             <p class="c7">
-                                <span class="c3">[Code postal, Ville]</span>
+                                <span class="c3">'.$_SESSION['ville'].' | ['.$_SESSION['code_postal'].']</span>
                             </p>
                             <p class="c7">
                                 <span class="c3">'.$_SESSION['tel'].'</span>
@@ -84,7 +141,6 @@ echo '<html>
                                 <img src="data:image/png;base64,'.base64_encode($_SESSION['profile_pic']) .'" />
                                 
                             </h2>
-                            <img src="">
                         </td>
                     </tr>
                     <tr class="c16">
@@ -140,23 +196,11 @@ echo '<html>
                     <tr class="c41">
                         <td class="c18" colspan="2" rowspan="1">
                             <h1 class="c19">
-                                <span class="c0">Comp&eacute;tences-cl&eacute;s</span>
+                                <span class="c0">Comp&eacute;tences - Qualifications</span>
                             </h1>
-                            <p class="c7">
-                                <span class="c3">Marketing</span>
-                            </p>
-                            <p class="c7">
-                                <span class="c3">Gestion de projet</span>
-                            </p>
-                            <p class="c7">
-                                <span class="c3">Planification budg&eacute;taire </span>
-                            </p>
-                            <p class="c7">
-                                <span class="c3">R&eacute;seaux sociaux</span>
-                            </p>
-                            <p class="c7">
-                                <span class="c3">Planification</span>
-                            </p>
+                            <p>'.$res[0].'</p>
+                            <br>
+                            <p>'.$res[1].'</p>
                         </td>
                         <td class="c12" colspan="3" rowspan="1">
                             <h2 class="c14">

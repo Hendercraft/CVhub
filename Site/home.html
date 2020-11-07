@@ -3,19 +3,43 @@
     <head>
         <meta charset="UTF-8">
         <title>CVHUB</title>
-        <link rel="stylesheet" href="main.css">
-        <link rel="shortcut icon" href="favicon.ico" type="image/x-icon">
+        <link rel="stylesheet" href="css/main.css">
+        <link rel="shortcut icon" href="img/favicon.ico" type="image/x-icon">
     </head>
     <body>
+        <p>
+            <br><br>
+            <?php
+            if(session_status() === PHP_SESSION_ACTIVE)
+            {
+                if($_SESSION['loggedin'] === TRUE)
+                {
+                    echo 'You are logged in as '.$_SESSION['nom'] .' ' .$_SESSION['prenom'] ;
+                }
+                else
+                {
+                    session_unset();
+                    session_destroy();
+                    echo 'You are not logged in !';
+
+                }
+
+            }
+            else
+            {
+            echo 'You are not logged in !';
+            }
+        ?>
+        </p>
+        <br><br>
         <a href="enterprise.html">entrez une nouvelle enterprise</a>
-        <br>
+        <br><br>
         <a href="experience.html">Entrez une nouvelle expérience</a>
-        <br>
+        <br><br>
         <a href="poste.html">Entrez un nouveau poste</a>
-        <br>
+        <br><br>
         <a href="universite.html">Entrez une nouvelle université</a>
-        <br>
+        <br><br>
         <a href="cvhub.html">Créez votre CV!</a>
-        <br>
     </body>
 </html>
