@@ -34,6 +34,8 @@ $tel = intval($_POST['tel']);
 
 $adresse = $_POST['adresse'];
 
+$ville = $_POST['ville'];
+
 $lnk = $_POST['lnk'];
 
 
@@ -50,8 +52,8 @@ $born_date = html_entity_decode($_POST['born_date']);
 $fborn_date = date('Y-m-d',strtotime($born_date));
 
 
-$signup = 'INSERT INTO dbcv.users(nom,prenom,adresse,date_naissance,email,password,telephone,linkdin,profile_pic)
-VALUES (?,?,?,?,?,?,?,?,?)';
+$signup = 'INSERT INTO dbcv.users(nom,prenom,adresse,ville,date_naissance,email,password,telephone,linkdin,profile_pic)
+VALUES (?,?,?,?,?,?,?,?,?,?)';
 
 $verify = 'SELECT * from `users` WHERE `users`.email LIKE ?';
 
@@ -78,13 +80,13 @@ if($ver = $conn->prepare($verify))
         echo $ver->num_rows;
         $ver->close();
         if ($stmt = $conn->prepare($signup)) {
-            $stmt->bind_param('ssssssssb',$nom,$firstname,$adresse,$fborn_date,$email,$mdp,$tel,$lnk,$profile_pic);
+            $stmt->bind_param('sssssssssb',$nom,$firstname,$adresse,$ville,$fborn_date,$email,$mdp,$tel,$lnk,$profile_pic);
 
             while (!feof($fpic))
 
             {
 
-                $stmt->send_long_data(8, fread($fpic, 1048576));
+                $stmt->send_long_data(9, fread($fpic, 1048576));
 
             }
             fclose($fpic);
