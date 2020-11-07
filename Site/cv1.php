@@ -31,29 +31,33 @@ if($stmt=$conn->query($cmp))
 
 $req[0] = 'SELECT intitule FROM competences c INNER JOIN  user_competences uc on c.id = uc.competences_id  WHERE uc.user_id ='.$id;
 $req[1] = 'SELECT id FROM users';
-$res[0] = 'test';
+$res[0] = ' ';
 $i=0;
 
-foreach ($req as $query)
+for($i=0;$i<1;$i+=1)
 {
-    if($stmt = $conn->query($query))
+
+    if($stmt = $conn->query($req[$i]))
     {
+        $k = 0;
         while($row = $stmt->fetch_row())
         {
             if(isset($row[0]))
             {
-                $res[$i]=$row[0];
-                $i+=1;
+                $part[$k] = $row[0];
+
             }
             else
             {
-                $res[$i]=" ";
+                $res =" ";
             }
+            $res[$i] .= "<br><p>$part[$k]</p>";
+            $k = $k + 1;
+
 
         }
     }
 }
-
 
 
 
@@ -198,9 +202,9 @@ echo '<html>
                             <h1 class="c19">
                                 <span class="c0">Comp&eacute;tences - Qualifications</span>
                             </h1>
-                            <p>'.$res[0].'</p>
+                            '.$res[0].'
                             <br>
-                            <p>'.$res[1].'</p>
+                            
                         </td>
                         <td class="c12" colspan="3" rowspan="1">
                             <h2 class="c14">
