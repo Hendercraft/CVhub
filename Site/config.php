@@ -33,6 +33,7 @@ if(strtoupper(substr(PHP_OS, 0, 3)) == 'WIN')
     define('ENTERPRISE_P',__ROOT__.'\enterprise.html');
     define('CV_P',__ROOT__.'\cv.html');
     define('POSTE_P',__ROOT__.'\poste.html');
+    define('ADD_CMP_P',__ROOT__.'\add_cmp.html');
     define('CV_P1',__ROOT__.'\cv1.html');
 } else { //unix versions
     define('LOGIN_P',__ROOT__.'/login.html');
@@ -42,5 +43,6 @@ if(strtoupper(substr(PHP_OS, 0, 3)) == 'WIN')
     define('ENTERPRISE_P',__ROOT__.'/enterprise.html');
     define('CV_P',__ROOT__.'/cv.html');
     define('POSTE_P',__ROOT__.'/poste.html');
+    define('ADD_CMP_P',__ROOT__.'/add_cmp.html');
     define('CV_P1',__ROOT__.'/cv1.html');
 }
