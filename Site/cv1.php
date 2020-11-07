@@ -1,6 +1,7 @@
 <?php
 session_start();
 $test = $_SESSION['nom'];
+//var_dump($_SESSION['profile_pic']);
 echo '<html>
     <head>
         <meta content="text/html; charset=UTF-8" http-equiv="content-type">
@@ -80,7 +81,8 @@ echo '<html>
                         </td>
                         <td class="c35" colspan="3" rowspan="1">
                             <h2 class="c14">
-                                <span class="c0">photo</span>
+                                <img src="data:image/png;base64,'.base64_encode($_SESSION['profile_pic']) .'" />
+                                
                             </h2>
                             <img src="">
                         </td>
