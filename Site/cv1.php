@@ -6,7 +6,7 @@ echo '<html>
     <head>
         <meta content="text/html; charset=UTF-8" http-equiv="content-type">
         <link rel="stylesheet" type="text/css"
-        media="screen" href="cv1.css" />
+        media="screen" href="css/cv1.css" />
     </head>
     <body>
         <div class="c32">
@@ -84,7 +84,6 @@ echo '<html>
                                 <img src="data:image/png;base64,'.base64_encode($_SESSION['profile_pic']) .'" />
                                 
                             </h2>
-                            <img src="">
                         </td>
                     </tr>
                     <tr class="c16">
