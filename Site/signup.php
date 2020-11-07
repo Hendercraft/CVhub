@@ -26,8 +26,12 @@ $adresse = $_POST['adresse'];
 
 $lnk = $_POST['lnk'];
 
-$profile_pic = $_POST['img'];
-$fpic = fopen($profile_pic,'r');
+
+
+$profile_pic = $_FILES['img']['name'];
+$convert_to_base64 = base64_encode(file_get_contents($_FILES['img']['tmp_name']));
+$base64_image = "data:image/jpeg;base64,".$convert_to_base64;
+$fpic = fopen($base64_image,'r');
 
 $mdp = password_hash($_POST['mdp'],PASSWORD_DEFAULT );
 
@@ -35,8 +39,6 @@ $mdp = password_hash($_POST['mdp'],PASSWORD_DEFAULT );
 $born_date = html_entity_decode($_POST['born_date']);
 $fborn_date = date('Y-m-d',strtotime($born_date));
 
-/*$sql = "INSERT INTO dbcv.users(nom,prenom,adresse,date_naissance,email,password,telephone,linkdin)
-VALUES ('$nom','$firstname','$adresse','$fborn_date','$email','$mdp',$tel,'$lnk')";*/
 
 $signup = 'INSERT INTO dbcv.users(nom,prenom,adresse,date_naissance,email,password,telephone,linkdin,profile_pic)
 VALUES (?,?,?,?,?,?,?,?,?)';
