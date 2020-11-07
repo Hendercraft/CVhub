@@ -131,6 +131,7 @@ CREATE TABLE `users` (
   `prenom` varchar(50) NOT NULL,
   `adresse` varchar(150) NOT NULL,
   `ville` varchar(150) NOT NULL,
+  `code_postal` varchar(150) NOT NULL,
   `date_naissance` date NOT NULL,
   `email` varchar(50) NOT NULL,
   `password` varchar(250) NOT NULL,
@@ -270,7 +271,7 @@ ALTER TABLE `universite`
 -- AUTO_INCREMENT pour la table `users`
 --
 ALTER TABLE `users`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=92;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=1;
 
 --
 -- Contraintes pour les tables déchargées

@@ -40,8 +40,16 @@ foreach ($req as $query)
     {
         while($row = $stmt->fetch_row())
         {
-            $res[$i]=$row[0];
-            $i+=1;
+            if(isset($row[0]))
+            {
+                $res[$i]=$row[0];
+                $i+=1;
+            }
+            else
+            {
+                $res[$i]=" ";
+            }
+
         }
     }
 }
@@ -113,7 +121,7 @@ echo '<html>
                                 <span class="c3">'.$_SESSION['adresse'].'</span>
                             </p>
                             <p class="c7">
-                                <span class="c3">[Code postal, Ville]</span>
+                                <span class="c3">'.$_SESSION['ville'].' | ['.$_SESSION['code_postal'].']</span>
                             </p>
                             <p class="c7">
                                 <span class="c3">'.$_SESSION['tel'].'</span>

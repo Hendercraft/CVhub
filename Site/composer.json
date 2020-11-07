@@ -3,7 +3,8 @@
         "sabberworm/php-css-parser": "*",
         "phenx/php-svg-lib": "*" ,
         "phenx/php-font-lib": "*",
-        "dompdf/dompdf": "*"
+        "dompdf/dompdf": "*",
+        "ext-mysqli": "*"
     } 
 }
 
