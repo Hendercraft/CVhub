@@ -11,7 +11,7 @@ $title = $_POST['title'];
 
 if(!empty($title))
 {
-    $req = 'INSERT INTO dbcv.competences(intitule) VALUES ?';
+    $req = 'INSERT INTO dbcv.competences(intitule) VALUES (?)';
 }
 else
 {
@@ -33,7 +33,7 @@ if($ver = $conn->prepare($verify))
 
     if($ver->num_rows === 0)
     {
-        if($stmt = $conn->prepare())
+        if($stmt = $conn->prepare($req))
         {
             $stmt->bind_param('s',$title);
 
@@ -47,7 +47,9 @@ if($ver = $conn->prepare($verify))
         }
         else
         {
-            echo "Error: " . $signup . "<br>" . $conn->error;
+            echo "Error: " . $stmt . "<br>" . $conn->error;
         }
     }
 }
+
+$conn->close();
