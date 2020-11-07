@@ -8,12 +8,11 @@ mysqli_report(MYSQLI_REPORT_ERROR | MYSQLI_REPORT_STRICT);
 require_once('config.php');
 
 
-if( $_POST["nom"] || $_POST["prenom"] ) {
-    if (!preg_match(" /([^A-Za-z\s])/ ",$_POST['nom'] ) && preg_match(" /([^A-Za-z\s])/ ",$_POST['prenom'] )) {
-        die ("invalid name , name should be only composed of letters");
-    }
 
+if (!preg_match(" #^[a-zA-Z]+$# ",$_POST['nom'] ) || !preg_match(" #^[a-zA-Z]+$# ",$_POST['prenom'] )) {
+    die ("invalid name , name should be only composed of letters");
 }
+
 if( $_POST["email"]){
     if ( !preg_match ( " /^.+@.+\.[a-zA-Z]{2,}$/ " ,$_POST['email'])){
         die("invalide Email, email should be be composed like example@test.com");
