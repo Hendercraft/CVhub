@@ -7,6 +7,30 @@
         <link rel="shortcut icon" href="img/favicon.ico" type="image/x-icon">
     </head>
     <body>
+        <p>
+            <br><br>
+            <?php
+            if(session_status() === PHP_SESSION_ACTIVE)
+            {
+                if($_SESSION['loggedin'] === TRUE)
+                {
+                    echo 'You are logged in as '.$_SESSION['nom'] .' ' .$_SESSION['prenom'] ;
+                }
+                else
+                {
+                    session_unset();
+                    session_destroy();
+                    echo 'You are not logged in !';
+
+                }
+
+            }
+            else
+            {
+            echo 'You are not logged in !';
+            }
+        ?>
+        </p>
         <br><br>
         <a href="enterprise.html">entrez une nouvelle enterprise</a>
         <br><br>

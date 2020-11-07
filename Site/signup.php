@@ -9,7 +9,7 @@ require_once('config.php');
 
 
 if( $_POST["nom"] || $_POST["prenom"] ) {
-    if (preg_match("/[^A-Za-z'-]/",$_POST['nom'] ) && preg_match("/[^A-Za-z'-]/",$_POST['prenom'] )) {
+    if (!preg_match(" /([^A-Za-z\s])/ ",$_POST['nom'] ) && preg_match(" /([^A-Za-z\s])/ ",$_POST['prenom'] )) {
         die ("invalid name , name should be only composed of letters");
     }
 

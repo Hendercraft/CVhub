@@ -15,7 +15,6 @@
 
     <a href="signup.html">Sign Up</a>
     <a href="login.html">Login</a>
-    <a href="cv1.php">CV</a>
     <br>
     <br>
     <p>
@@ -23,27 +22,6 @@
         Welcome on CVHUB where the world build CV.
 
 
-        <?php
-            if(session_status() === PHP_SESSION_ACTIVE)
-            {
-                if($_SESSION['loggedin'] === TRUE)
-                {
-                    echo 'You are logged in as '.$_SESSION['nom'] .' ' .$_SESSION['prenom'] ;
-                }
-                else
-                {
-                    session_unset();
-                    session_destroy();
-                    echo 'You are not logged in !';
-
-                }
-
-            }
-            else
-            {
-            echo 'You are not logged in !';
-            }
-        ?>
     </p>
 </body>
 </html>

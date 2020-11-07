@@ -50,7 +50,7 @@ if($stmt = $conn->prepare($req) and session_status() === PHP_SESSION_NONE) //Si 
         if(password_verify($mdp,$_SESSION['mdp'])) // si le mdp correspond
         {
             $_SESSION['loggedin'] = TRUE;//connecté
-            require_once(INDEX_P);//retour à index.html
+            require_once(HOME_P);//retour à index.html
 
             //echo 'You are logged in as '.$_SESSION['nom'] .' ' .$_SESSION['prenom'] ;
         } else {
