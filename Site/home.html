@@ -12,21 +12,20 @@
             <?php
             if(session_status() === PHP_SESSION_ACTIVE)
             {
-                if($_SESSION['loggedin'] === TRUE)
-                {
+                if($_SESSION['loggedin'] === TRUE){
                     echo 'You are logged in as '.$_SESSION['nom'] .' ' .$_SESSION['prenom'] ;
+                    if($_SESSION['email'] == "admin@admin.admin"){
+                        echo ' <a href="stats.php">Statistique de votre site</a> ';
+                    }
                 }
-                else
-                {
+                else{
                     session_unset();
                     session_destroy();
                     echo 'You are not logged in !';
 
                 }
-
             }
-            else
-            {
+            else{
             echo 'You are not logged in !';
             }
         ?>
@@ -39,6 +38,8 @@
         <a href="poste.html">Entrez un nouveau poste</a>
         <br><br>
         <a href="universite.html">Entrez une nouvelle université</a>
+        <br><br>
+        <a href="update.html">Mettez à jour votre profil</a>
         <br><br>
         <a href="cvhub.html">Créez votre CV!</a>
     </body>

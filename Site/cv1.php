@@ -30,31 +30,48 @@ if($stmt=$conn->query($cmp))
 }*/
 
 $req[0] = 'SELECT intitule FROM competences c INNER JOIN  user_competences uc on c.id = uc.competences_id  WHERE uc.user_id ='.$id;
-$req[1] = 'SELECT id FROM users';
-$res[0] = 'test';
+$req[1] = 'SELECT intitule,spé,nom,date_d,date_f FROM `formations` AS f INNER JOIN `peridode_etude` AS p ON f.id = p.formation_id INNER JOIN `universite` AS u ON p.universite = u.id  WHERE p.user_id='.$id.' ORDER BY date_d DESC';
+/*$req[1] = 'SELECT intitule FROM formations AS f INNER JOIN peridode_etude pe on f.id = pe.formation_id WHERE pe.user_id='.$id;
+$req[2] = 'SELECT spé FROM formations AS f INNER JOIN peridode_etude pe on f.id = pe.formation_id WHERE pe.user_id='.$id;*/
+$req[2] = 'SELECT intitule,nom,ville,date_d,date_f FROM `poste` AS p INNER JOIN `experience_pro` AS exp ON p.id = exp.poste_id INNER JOIN `entreprises` AS e ON exp.entreprise_id = e.id WHERE exp.user_id = '.$id.' ORDER BY date_d DESC';
+$res[0] = ' ';
+$part[0] = '';
 $i=0;
 
-foreach ($req as $query)
+for($i=0;$i<3;$i+=1)
 {
-    if($stmt = $conn->query($query))
+
+    if($stmt = $conn->query($req[$i]))
     {
+        $num_f = $conn->field_count ;
+        $k = 0;
         while($row = $stmt->fetch_row())
         {
+
             if(isset($row[0]))
             {
-                $res[$i]=$row[0];
-                $i+=1;
+                for($j=0;$j<$num_f;$j+=1)
+                {
+                    $sub_part[$j] = $row[$j];
+                    $part[$k] .= "• $sub_part[$j] ";
+                }
+                //echo $num_f;
+
             }
             else
             {
-                $res[$i]=" ";
+                $res =" ";
             }
+            $res[$i] .= "<br><br><p class=\"c7\"><span class=\"c3\">$part[$k]</span></p>";
+            $part[$k] = '';
+            $k = $k + 1;
+
 
         }
     }
 }
 
-
+$res[2] = "<br>";
 
 
 
@@ -148,20 +165,17 @@ echo '<html>
                             <h1 class="c19">
                                 <span class="c0">Formation</span>
                             </h1>
-                            <p class="c7">
-                                <span class="c3">[Nom de l&rsquo;&eacute;tablissement],</span>
-                            </p>
-                            <p class="c7">
-                                <span class="c3">[Ville], [D&eacute;partement]</span>
-                            </p>
-                            <p class="c7">
-                                <span class="c3">[Vous pouvez inclure ici un bref r&eacute;capitulatif des cours dispens&eacute;s ainsi que des distinctions et mentions obtenues.]</span>
-                            </p>
+                            '.$res[1].'
+                            
+                            
+                            
+                    
                         </td>
                         <td class="c12" colspan="3" rowspan="1">
                             <h2 class="c14">
                                 <span class="c0">Exp&eacute;rience</span>
                             </h2>
+                            
                             <p class="c2">
                                 <span class="c34">[Date de d&eacute;but] &ndash; [Date de fin]</span>
                             </p>
@@ -171,6 +185,7 @@ echo '<html>
                             <p class="c8 c4">
                                 <span class="c28"></span>
                             </p>
+                            '.$res[2].'
                             <p class="c2">
                                 <span class="c34">[Date de d&eacute;but] &ndash; [Date de fin]</span>
                             </p>
@@ -198,24 +213,11 @@ echo '<html>
                             <h1 class="c19">
                                 <span class="c0">Comp&eacute;tences - Qualifications</span>
                             </h1>
-                            <p>'.$res[0].'</p>
+                            '.$res[0].'
                             <br>
-                            <p>'.$res[1].'</p>
+                            
                         </td>
-                        <td class="c12" colspan="3" rowspan="1">
-                            <h2 class="c14">
-                                <span class="c0">Communication</span>
-                            </h2>
-                            <p class="c8">
-                                <span class="c3">[Vous avez effectu&eacute; une pr&eacute;sentation qui a recueilli des critiques &eacute;logieuses&nbsp;? Ne vous en cachez pas&nbsp;!</span>
-                            </p>
-                            <p class="c8">
-                                <span class="c3">Montrez ici comment vous travaillez et interagissez avec les autres.]</span>
-                            </p>
-                            <p class="c8 c4">
-                                <span class="c3"></span>
-                            </p>
-                        </td>
+                        
                     </tr>                   
                 </tbody>
             </table>
