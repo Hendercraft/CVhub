@@ -14,6 +14,16 @@ if( $_POST["nom"] || $_POST["prenom"] ) {
     }
 
 }
+if( $_POST["email"]){
+    if ( !preg_match ( " /^.+@.+\.[a-zA-Z]{2,}$/ " ,$_POST['email'])){
+        die("invalide Email, email should be be composed like example@test.com");
+    }
+}
+if( $_POST["tel"]){
+    if ( !preg_match ( " #^[0-9]{2}[-/ ]?[0-9]{2}[-/ ]?[0-9]{2}[-/ ]?[0-9]{2}[-/ ]?[0-9]{2}?$# " , $_POST['tel'] ) ){
+        die("invalid phone number, please enter a valid phone number");
+    }
+}
 $email = $_POST['email'];
 
 $firstname = $_POST['prenom'];
