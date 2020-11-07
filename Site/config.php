@@ -34,6 +34,7 @@ if(strtoupper(substr(PHP_OS, 0, 3)) == 'WIN')
     define('POSTE_P',__ROOT__.'\poste.html');
     define('HOME_P',__ROOT__.'\home.html');
     define('CV_HUB',__ROOT__.'\cvhub.html');
+    define('ADD_CMP_P',__ROOT__.'\add_cmp.html');
     define('CV_P1',__ROOT__.'\cv1.html');
     define('CV_Y',__ROOT__.'\cv_yellow.html');
     define('CV_R',__ROOT__.'\cv_red.html');
@@ -48,6 +49,7 @@ if(strtoupper(substr(PHP_OS, 0, 3)) == 'WIN')
     define('POSTE_P',__ROOT__.'/poste.html');
     define('HOME_P',__ROOT__.'/home.html');
     define('CV_HUB',__ROOT__.'/cvhub.html');
+    define('ADD_CMP_P',__ROOT__.'/add_cmp.html');
     define('CV_P1',__ROOT__.'/cv1.html');
     define('CV_Y',__ROOT__.'/cv_yellow.html');
     define('CV_R',__ROOT__.'/cv_red.html');
