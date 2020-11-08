@@ -55,7 +55,6 @@ if($stmt = $conn->prepare($req) and session_status() === PHP_SESSION_NONE) //Si 
             $_SESSION['loggedin'] = TRUE;//connecté
             require_once(HOME_P);//arriver sur la apge personelle de l'utilisateur
 
-            //echo 'You are logged in as '.$_SESSION['nom'] .' ' .$_SESSION['prenom'] ;
         } else {
             session_unset();//supression des variables de la session précedement créée
             session_destroy();//destruction de la session précedement créée

@@ -1,14 +1,15 @@
 <?php
-$output='';
+$output='';//création d'une variable dans laquelle nous allons concater ce que l'on voudra afficher
 if(session_status() == PHP_SESSION_ACTIVE)
 {
-    if($_SESSION['loggedin'] == TRUE){
+    if($_SESSION['loggedin'] == TRUE){//si l'utilisateur est connecté
         $tempnom=$_SESSION['nom'];
-        $tempprenom=$_SESSION['prenom'] ;
+        $tempprenom=$_SESSION['prenom'] ;//définition des variable pour pouvoir les introduire dans la variable $output
         $output.="Vous êtes connectés en tant que $tempnom $tempprenom" ;
-        if($_SESSION['email'] == "admin@admin.admin"){
+        if($_SESSION['email'] == "admin@admin.admin"){//si l'utilisateur posséde une session administrateur
             $hidden="color: red;";
             $output .='<a href=\'stats.php\'><button> Statistiques de votre site</button></a> ';
+            //le bouton de qui permet d'acceder aux statistiques sera affiché
         }
         else
         {
@@ -19,7 +20,7 @@ else{
 
 session_unset();
 session_destroy();
-$output.='You are not logged in !';
+$output.='You are not logged in !';//préviens l'utilisateur qu'il n'est pas connecté
 
 }
 }
