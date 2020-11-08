@@ -166,55 +166,55 @@ echo '<!DOCTYPE html>
 <img src="img/logo.png" alt="Un magnifique logo" width="257" height="110">
 <p>
 
-<form method="post" action="add_experience.php">
+<form method="post" action="suppr_user_data.php">
     <h2>Supprimer une expérience professionnel </h2>
-     <label for="poste">Expérience Professionnel: </label>
+     <label for="exp">Expérience Professionnel: </label>
 
-     <select id="poste" required="required" name="poste">
+     <select id="exp" required="required" name="exp">
         '.$option1.'
      </select>
 
     <br>
     
     <br>
-    <label for="submit"></label>
-    <input name="submit" id="submit" class="submit-b" type="submit" value="Submit"/>
+    <label for="supprexp"></label>
+    <input name="supprexp" id="supprexp" class="submit-b" type="submit" value="Supprexp"/>
 
     <br>
 
 </form>
 
-<form method="post" action="add_experience.php">
+<form method="post" action="suppr_user_data.php">
     <h2>Supprimer une période d\'étude </h2>
-     <label for="poste">Période d\'Étude: </label>
+     <label for="etude">Période d\'Étude: </label>
 
-     <select id="poste" required="required" name="poste">
+     <select id="etude" required="required" name="etude">
         '.$option2.'
      </select>
 
     <br>
     
     <br>
-    <label for="submit"></label>
-    <input name="submit" id="submit" class="submit-b" type="submit" value="Submit"/>
+    <label for="suppretude"></label>
+    <input name="suppretude" id="suppretude" class="submit-b" type="submit" value="Suppretude"/>
 
     <br>
 
 </form>
 
-<form method="post" action="add_experience.php">
-    <h2>Supprimer une compétance </h2>
-     <label for="poste">Compétance: </label>
+<form method="post" action="suppr_user_data.php">
+    <h2>Supprimer une compétence </h2>
+     <label for="comp">Compétence: </label>
 
-     <select id="poste" required="required" name="poste">
+     <select id="comp" required="required" name="comp">
         '.$option3.'
      </select>
 
     <br>
     
     <br>
-    <label for="submit"></label>
-    <input name="submit" id="submit" class="submit-b" type="submit" value="Submit"/>
+    <label for="supprcomp"></label>
+    <input name="supprcomp" id="supprcomp" class="submit-b" type="submit" value="Supprcomp"/>
 
     <br>
 

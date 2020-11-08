@@ -3,13 +3,13 @@
 
 require_once('config.php');
 /**Setting Up the MYSQL Query**/
-$competanceList = 'SELECT * from `competences`';
+$competenceList = 'SELECT * from `competences`';
 
 /**Executing the SQL Query and setting up the variables**/
 
-if($competanceList = $conn->prepare($competanceList)){
-    $competanceList->execute();
-    $result =$competanceList->get_result();
+if($competenceList = $conn->prepare($competenceList)){
+    $competenceList->execute();
+    $result =$competenceList->get_result();
     $option = '';
     while ($row = $result->fetch_array()) {
         $tempid = $row['id'];
@@ -17,7 +17,7 @@ if($competanceList = $conn->prepare($competanceList)){
         $option .= "<option value = \"$tempid\" >$tempint</option> ";
 
     }
-    $competanceList->close();
+    $competenceList->close();
 }
 
 
