@@ -15,21 +15,6 @@ require_once('config.php');
 $id = $_SESSION['id'];
 
 $css = file_get_contents($_SESSION['css_path']);
-/*$cmp = 'SELECT intitule FROM competences c INNER JOIN  user_competences uc on c.id = uc.competences_id  WHERE uc.user_id ='.$id;
-$r_cmp[0]='test';
-
-
-if($stmt=$conn->query($cmp))
-{
-    $i=0;
-
-    while($row = $stmt->fetch_row())
-    {
-        $r_cmp[$i] = $row[0];
-
-        $i+=1;
-    }
-}*/
 
 $req[0] = 'SELECT intitule FROM competences c INNER JOIN  user_competences uc on c.id = uc.competences_id  WHERE uc.user_id ='.$id;
 $req[1] = 'SELECT intitule,spe,nom,date_d,date_f FROM `formations` AS f INNER JOIN `peridode_etude` AS p ON f.id = p.formation_id INNER JOIN `universite` AS u ON p.universite = u.id  WHERE p.user_id='.$id.' ORDER BY date_d DESC';
@@ -208,3 +193,4 @@ $html = '<html>
 
 echo $html;
 
+$conn->close();
