@@ -51,7 +51,7 @@ if($ver = $conn->prepare($verify)){ //If query was properly prepared
             $stmt->execute();
 
             $stmt->close();
-            require_once(INDEX_P);
+            require_once(HOME_P);
         } else {
             echo "Error: " . $addformation . "<br>" . $conn->error;
         }

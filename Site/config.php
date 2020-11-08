@@ -42,7 +42,7 @@ if(strtoupper(substr(PHP_OS, 0, 3)) == 'WIN')
 
 } else { //unix versions
     define('LOGIN_P',__ROOT__.'/login.html');
-    define('INDEX_P',__ROOT__.'/login.html');
+    define('INDEX_P',__ROOT__.'/index.html');
     define('SIGNUP_P',__ROOT__.'/signup.html');
     define('UNIVERSITE_P',__ROOT__.'/universite.html');
     define('ENTERPRISE_P',__ROOT__.'/enterprise.html');
