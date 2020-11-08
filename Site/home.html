@@ -1,58 +1,55 @@
 <!DOCTYPE html>
 <html lang="en">
-    <head>
-        <meta charset="UTF-8">
-        <title>CVHUB</title>
-        <link rel="stylesheet" href="css/main.css">
-        <link rel="shortcut icon" href="img/favicon.ico" type="image/x-icon">
-    </head>
-    <body>
-        <p>
-            <br><br>
-            <?php
+<head>
+    <meta charset="UTF-8">
+    <title>CVHUB</title>
+    <link rel="stylesheet" href="css/main.css">
+    <link rel="shortcut icon" href="img/favicon.ico" type="image/x-icon">
+</head>
+<body>
+<p>
+    <br><br>
+    <?php
             if(session_status() === PHP_SESSION_ACTIVE)
             {
                 if($_SESSION['loggedin'] === TRUE){
                     echo 'Vous êtes connectés en tant que '.$_SESSION['nom'] .' ' .$_SESSION['prenom'] ;
                     if($_SESSION['email'] == "admin@admin.admin"){
-<<<<<<< Updated upstream
+
                         $hidden="color: red;";
-                    }
-                    else
-                    {
-                        $hidden="display: none;";
-=======
                         echo ' <a href="stats.php"><button> Statistiques de votre site</button></a> ';
->>>>>>> Stashed changes
-                    }
-                }
-                else{
+    }
+    else{
+    $hidden="display: none;";
 
-                    session_unset();
-                    session_destroy();
-                    echo 'You are not logged in !';
 
-                }
-            }
-            else{
-            echo 'You are not logged in !';
-            }
-            ?>
-        </p>
-        <a href="stats.php" style=<?=$hidden?>>Statistique de votre site</a>
-        <br><br>
-        <a href="enterprise.html"><button type="button">Entrez une nouvelle entreprise</button></a>
-        <br><br>
-        <a href="experience.php"><button type="button">Entrez une nouvelle expérience</button></a>
-        <br><br>
-        <a href="add_cmp.html"><button type="button">Entrez une nouvelle compétence</button></a>
-        <br><br>
-        <a href="poste.html"><button type="button">Entrez un nouveau poste</button></a>
-        <br><br>
-        <a href="universite.html"><button type="button">Entrez une nouvelle université</button></a>
-        <br><br>
-        <a href="update.html"><button type="button">Mettez à jour votre profil</button></a>
-        <br><br>
-        <a href="cvhub.html"><button type="button">Créez votre CV!</button></a>
-    </body>
+
+    }
+    }
+    else{
+
+    session_unset();
+    session_destroy();
+    echo 'You are not logged in !';
+
+    }
+    }
+    ?>
+</p>
+<a href="stats.php" style=<?=$hidden?>>Statistique de votre site</a>
+<br><br>
+<a href="enterprise.html"><button type="button">Entrez une nouvelle entreprise</button></a>
+<br><br>
+<a href="experience.php"><button type="button">Entrez une nouvelle expérience</button></a>
+<br><br>
+<a href="add_cmp.html"><button type="button">Entrez une nouvelle compétence</button></a>
+<br><br>
+<a href="poste.html"><button type="button">Entrez un nouveau poste</button></a>
+<br><br>
+<a href="universite.html"><button type="button">Entrez une nouvelle université</button></a>
+<br><br>
+<a href="update.html"><button type="button">Mettez à jour votre profil</button></a>
+<br><br>
+<a href="cvhub.html"><button type="button">Créez votre CV!</button></a>
+</body>
 </html>
