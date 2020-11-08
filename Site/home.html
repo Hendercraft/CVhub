@@ -15,15 +15,12 @@
                 if($_SESSION['loggedin'] === TRUE){
                     echo 'Vous êtes connectés en tant que '.$_SESSION['nom'] .' ' .$_SESSION['prenom'] ;
                     if($_SESSION['email'] == "admin@admin.admin"){
-<<<<<<< Updated upstream
                         $hidden="color: red;";
                     }
                     else
                     {
                         $hidden="display: none;";
-=======
-                        echo ' <a href="stats.php"><button> Statistiques de votre site</button></a> ';
->>>>>>> Stashed changes
+                        echo " <a href='stats.php'><button> Statistiques de votre site</button></a> ";
                     }
                 }
                 else{
