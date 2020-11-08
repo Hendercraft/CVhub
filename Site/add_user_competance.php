@@ -35,7 +35,7 @@ if($ver = $conn->prepare($verify)){ //If query was properly prepared
     $ver->store_result();
 
     if($ver->num_rows !== 0) {
-        echo '<h3 style="color:#ff0000;">Vous avez dejà rentrée cette compétance professionnel!</h3><br>';
+        echo '<h3 style="color:#ff0000;">Vous avez dejà rentrée cette compétence professionnel!</h3><br>';
         require_once(USER_COMPETANCES_P);
 
     }else{
@@ -45,7 +45,7 @@ if($ver = $conn->prepare($verify)){ //If query was properly prepared
             $stmt->execute();
             $stmt->close();
             require_once(USER_COMPETANCES_P);
-            echo "Votre compétance a bien été ajouté";
+            echo "Votre Compétence a bien été ajouté";
         } else {
             echo "Error: " . $addcompetance . "<br>" . $conn->error;
         }

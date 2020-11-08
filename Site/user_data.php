@@ -26,13 +26,13 @@ $user_comp_list = "SELECT * from `user_competences` WHERE user_competences.user_
 if($exp_pro_list = $conn->prepare($exp_pro_list)){
     $exp_pro_list->execute();
     $result =$exp_pro_list->get_result();
-    $option = '';
+    $option1 = '';
     while ($row = $result->fetch_array()) {
 
         /**Setting Up the MYSQL Query and variable to display to the user**/
         $entrepriseid = $row['entreprise_id'];
         $posteid = $row['poste_id'];
-        //$exp_pro_list->close();
+
         $getentreprisename = "SELECT nom,ville from `entreprises` WHERE entreprises.id = $entrepriseid";
         $getformationint = "SELECT intitule from `poste` WHERE poste.id = $posteid ";
 
@@ -64,26 +64,93 @@ if($exp_pro_list = $conn->prepare($exp_pro_list)){
         $tempstartdate = $row['date_d'];
         $tempendate = $row['date_f'];
         $tempexpproid = $row['id'];
-        $option1 .= "<option value = \"$tempexpproid\">$intPOSTE chez $nameENT ($townENT) de $tempstartdate a $tempendate </option> ";
+        $option1 .= "<option value = \"$tempexpproid\">$intPOSTE chez $nameENT ($townENT) de $tempstartdate à $tempendate </option> ";
 
     }
     $exp_pro_list->close();
 }
 
-/**
-if($posteList = $conn->prepare($posteList)){
-    $posteList->execute();
-    $result =$posteList->get_result();
-    $option1 = '';
+if($p_etude_list = $conn->prepare($p_etude_list)){
+    $p_etude_list->execute();
+    $result =$p_etude_list->get_result();
+    $option2 = '';
     while ($row = $result->fetch_array()) {
-        $tempid = $row['id'];
-        $tempname = $row['intitule'];
-        $option1 .= "<option value = \"$tempid\" >$tempname</option> ";
+
+        /**Setting Up the MYSQL Query and variable to display to the user**/
+        $formationid = $row['formation_id'];
+        $universityid = $row['universite'];
+        $getformationinfo = "SELECT intitule,niveau,spe from `formations` WHERE formations.id = $formationid";
+        $getuniversityinfo = "SELECT nom,ville from `universite` WHERE universite.id = $universityid ";
+
+
+
+        if ($getformationinfo = $conn->prepare($getformationinfo)){
+
+            $getformationinfo->execute();
+            $resultFORMA = $getformationinfo->get_result();
+            while ($rowFORMA = $resultFORMA->fetch_array()){
+                $intFORMA = $rowFORMA['intitule'];
+                $nivFORMA = $rowFORMA['niveau'];
+                $speFORMA = $rowFORMA['spe'];
+            }
+            $getformationinfo->close();
+        }
+
+
+        if ($getuniversityinfo = $conn->prepare($getuniversityinfo)){
+
+            $getuniversityinfo->execute();
+            $resultUNI= $getuniversityinfo->get_result();
+            while ($rowUNI = $resultUNI->fetch_array()){
+                $nomUNI = $rowUNI['nom'];
+                $townUNI = $rowUNI['ville'];
+            }
+            $getuniversityinfo->close();
+        }
+
+
+        $tempstartdate = $row['date_d'];
+        $tempendate = $row['date_f'];
+        $tempetude = $row['id'];
+        $option2 .= "<option value = \"$tempetude\">$intFORMA BAC + $nivFORMA $speFORMA de $nomUNI ($townUNI) de $tempstartdate à $tempendate </option> ";
 
     }
-    $posteList->close();
+    $p_etude_list->close();
 }
-**/
+
+
+if($user_comp_list = $conn->prepare($user_comp_list)){
+    $user_comp_list->execute();
+    $result =$user_comp_list->get_result();
+    $option3 = '';
+    while ($row = $result->fetch_array()) {
+
+        /**Setting Up the MYSQL Query and variable to display to the user**/
+        $competenceid = $row['competences_id'];
+
+
+        $getcompetenceint = "SELECT intitule from `competences` WHERE competences.id = $competenceid";
+
+
+
+
+        if ($getcompetenceint = $conn->prepare($getcompetenceint)){
+            $getcompetenceint->execute();
+            $resultCOMP = $getcompetenceint->get_result();
+            while ($rowCOMP = $resultCOMP->fetch_array()){
+                $intCOMP = $rowCOMP['intitule'];
+            }
+            $getcompetenceint->close();
+        }
+
+        $tempuserid = $row['user_id'];
+        $option3 .= "<option value = \"$tempuserid,$competenceid\">$intCOMP</option> ";
+    }
+    $user_comp_list->close();
+}
+
+
+
 
 echo '<!DOCTYPE html>
 <html lang="fr">
