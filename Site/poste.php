@@ -10,12 +10,12 @@ require_once('config.php'); //Calling config.php in order to keep the link to th
 
 
 /**Checking the data**/
-if( $_POST["pname"]) {
+/**if( $_POST["pname"]) {
     if (preg_match('/\d/', $_POST["$pname"])){
         die ("invalid name , name should be only composed of letters");
     }
 }
-
+**/
 
 /**Variables definition**/
 

@@ -61,6 +61,8 @@ echo '<!DOCTYPE html>
      <select id="university" required="required" name="university">
         '.$option1.'
      </select>
+     <a href="universite.html"><button type="button">Entrez une nouvelle universite!</button></a>
+
     <br>
     
     <label for="formation">Formation: </label>
@@ -68,22 +70,24 @@ echo '<!DOCTYPE html>
      <select id="formation" required="required" name="formation">
         '.$option.'
      </select>
-
+     <a href="formations.php"><button type="button">Entrez une nouvelle formation!</button></a>
     <br>
 
     <label for="startdate">Date de début: </label>
     <input name="startdate" id="startdate" type="date" required="required"/>
 
     <br>
+    <br>
+    
 
     <label for="enddate">Date de fin: </label>
     <input name="enddate" id="enddate" type="date" required="required"/>
-
+    
     <br>
     <label for="submit"></label>
     <input name="submit" id="submit" class="submit-b" type="submit" value="Submit"/>
 
-    <br>
+   
 
 </form>
 
