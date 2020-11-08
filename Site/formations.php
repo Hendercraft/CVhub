@@ -3,22 +3,48 @@
 
 require_once('config.php');
 session_start();
-/**Setting Up the MYSQL Query**/
-$posteList = 'SELECT * from `formations` WHERE `formations`.intitule LIKE ? AND `formations`.niveau LIKE ? AND `formations`.spé LIKE ? ';
 
-
+$output = '<!-- just a comment so php will not be mad if there is no POST -->';
 
 /**Getting the POST VALUE in case a research has been done**/
+if (isset($_POST['search'])) {
+    $intitule = $_POST['intitule'];
+    $niveau = $_POST['niveau'];
+    $spe = $_POST['spe'];
+    if ($intitule == ''){ // If the filed is empty it means it should no be take into consideration
+        $intitule = '%'; //thus ='%' this way LIKE is always true this way
+    }
+    if ($spe == '') { // If the filed is empty it means it should no be take into consideration
+        $spe = '%'; //thus ='%' this way LIKE is always true this way
+    }
+    if ($niveau == '') {
+        $niveau = 5;
+        $querypart = '(5=?)';
+    }else {
+        $querypart = '(`formations`.niveau = ?)';
+    }
+    /**Setting Up the MYSQL Query and the output string**/
 
+    $searchformation = "SELECT * from `formations` WHERE (`formations`.intitule LIKE ?) AND $querypart AND (`formations`.spe LIKE ?) ";
 
-/**Executing the SQL Query and setting up the variables**/
+    /**Executing the SQL Query and setting up the variables**/
 
-if($posteList  = $conn->prepare($posteList )){
-    $enterpriseList->execute();
-    $ver->bind_param('s',$pname,)
+    if($searchformation  = $conn->prepare($searchformation)){
+        $searchformation->bind_param('sis',$intitule,$niveau,$spe);
+        $searchformation->execute();
+        $result =$searchformation->get_result();
+        $output ='';
+        while ($row = $result->fetch_array()) {
+            $tempint = $row['intitule'];
+            $templevel= $row['niveau'];
+            $tempspe = $row['spe'];
+            $output .= "<tr> <td>$tempint</td> <td>$templevel</td> <td>$tempspe</td> </tr>";
 
+        }
+        $searchformation->close();
+
+    }
 }
-
 
 
 echo '<!DOCTYPE html>
@@ -27,7 +53,7 @@ echo '<!DOCTYPE html>
 <head>
     <meta charset="UTF-8">
     <title>Sign Up</title>
-    <link rel="stylesheet" href="main.css">
+    <link rel="stylesheet" href="css/main.css">
     <link rel="shortcut icon" href="favicon.ico" type="image/x-icon">
     
     
@@ -50,7 +76,7 @@ echo '<!DOCTYPE html>
 
 <p>
 
-<form method="post" action="formation.php">
+<form method="post" action="formations.php">
 
 
     <h2>Rechercher des formations dans la base</h2>
@@ -72,7 +98,7 @@ echo '<!DOCTYPE html>
 
     <br>
 
-    <input name="submit" id="submit" class="submit-b" type="submit" value="Submit"/>
+    <input name="search" id="search" class="submit-b" type="submit" value="Search"/>
 
     <br>
 
@@ -81,7 +107,7 @@ echo '<!DOCTYPE html>
 
 
 
-<form method="post" action="formation.php">
+<form method="post" action="add_formation.php">
 
 
     <h2>Ajouter une formation dans la base</h2>
@@ -89,12 +115,12 @@ echo '<!DOCTYPE html>
     
     
     <label for="intitule"> Intitulé: </label>
-    <input name="intitule" id="intitule" type="text"/>
+    <input name="intitule" id="intitule" type="text" required="required"/>
     
     <br>
     
     <label for="niveau">Niveau d\'étude:</label>
-    <input name="niveau" id="niveau" type="text"/>
+    <input name="niveau" id="niveau" type="text" required="required"/>
 
     <br>
 
@@ -130,7 +156,7 @@ echo '<!DOCTYPE html>
             <th scope="col">Niveau post Bac</th>
             <th scope="col">Spécialité</th>
         </tr>
-
+        '.$output.'
     </tbody>
 </table>
 

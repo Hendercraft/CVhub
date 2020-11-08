@@ -17,7 +17,7 @@ if($formationsList = $conn->prepare($formationsList)){
         $tempid = $row['id'];
         $tempint = $row['intitule'];
         $templevel= $row['niveau'];
-        $tempspe = $row['spé'];
+        $tempspe = $row['spe'];
         $option .= "<option value = \"$tempid\" >$tempint Bac +$templevel spé $tempspe </option> ";
 
     }
@@ -46,12 +46,12 @@ echo '<!DOCTYPE html>
 <head>
     <meta charset="UTF-8">
     <title>Sign Up</title>
-    <link rel="stylesheet" href="main.css">
+    <link rel="stylesheet" href="css/main.css">
     <link rel="shortcut icon" href="favicon.ico" type="image/x-icon">
 </head>
 
 <body>
-<img src="logo.png" alt="Un magnifique logo" width="257" height="110">
+<img src="img/logo.png" alt="Un magnifique logo" width="257" height="110">
 <p>
 
 <form method="post" action="signup.php">
