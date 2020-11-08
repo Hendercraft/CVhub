@@ -36,7 +36,7 @@ echo '<!DOCTYPE html>
 <img src="img/logo.png" alt="Un magnifique logo" width="257" height="110">
 <p>
 
-<form method="post" action="add_user_competances.php">
+<form method="post" action="add_user_competance.php">
 
      <label for="competance">Poste: </label>
 
