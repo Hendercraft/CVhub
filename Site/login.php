@@ -36,6 +36,9 @@ if($stmt = $conn->prepare($req) and session_status() === PHP_SESSION_NONE) //Si 
 
     $stmt->store_result();
 
+
+    session_set_cookie_params(0);
+
     session_start();
 
 

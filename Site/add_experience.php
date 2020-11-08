@@ -1,5 +1,8 @@
 <?php
+
+session_set_cookie_params(0);
 session_start();
+
 // Initialisation of error reporting functions
 ini_set('display_errors', 1);
 ini_set('log_errors',1);
@@ -22,7 +25,7 @@ $enddate =$_POST['enddate'];
 
 /**Setting up the SQL requests**/
 
-$addecperience = 'INSERT INTO dbcv.experience_pro(user_id,poste_id,entreprise_id,date_d,date_f) VALUES (?,?,?,?,?)'; // SQL query to write to the db
+$addexperience = 'INSERT INTO dbcv.experience_pro(user_id,poste_id,entreprise_id,date_d,date_f) VALUES (?,?,?,?,?)'; // SQL query to write to the db
 
 $verify =  'SELECT * from `experience_pro` WHERE (`experience_pro`.user_id LIKE ?) AND (`experience_pro`.poste_id = ?) AND (`experience_pro`.entreprise_id LIKE ?) AND (`experience_pro`.date_d LIKE ?) AND (`experience_pro`.date_f LIKE ?)  '; //SQL query to check if the formation is already in the db
 
@@ -41,7 +44,7 @@ if($ver = $conn->prepare($verify)){ //If query was properly prepared
 
     }else{
         $ver->close(); //We close the previous request
-        if ($stmt = $conn->prepare($addecperience)) { //Preparing the query to add the data
+        if ($stmt = $conn->prepare($addexperience)) { //Preparing the query to add the data
             $stmt->bind_param('issss',$_SESSION['id'],$poste,$entreprise,$startdate,$enddate);//Binding the parameters
 
             $stmt->execute();
@@ -50,7 +53,7 @@ if($ver = $conn->prepare($verify)){ //If query was properly prepared
             require_once(EXPERIENCE_P);
             echo "Votre experience a bien été ajouté";
         } else {
-            echo "Error: " . $addformation . "<br>" . $conn->error;
+            echo "Error: " . $addexperience . "<br>" . $conn->error;
         }
     }
 }

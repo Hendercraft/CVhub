@@ -15,10 +15,15 @@
                 if($_SESSION['loggedin'] === TRUE){
                     echo 'Vous êtes connectés en tant que '.$_SESSION['nom'] .' ' .$_SESSION['prenom'] ;
                     if($_SESSION['email'] == "admin@admin.admin"){
-                        echo ' <a href="stats.php">Statistique de votre site</a> ';
+                        $hidden="color: red;";
+                    }
+                    else
+                    {
+                        $hidden="display: none;";
                     }
                 }
                 else{
+
                     session_unset();
                     session_destroy();
                     echo 'You are not logged in !';
@@ -28,12 +33,15 @@
             else{
             echo 'You are not logged in !';
             }
-        ?>
+            ?>
         </p>
+        <a href="stats.php" style=<?=$hidden?>>Statistique de votre site</a>
         <br><br>
         <a href="enterprise.html"><button type="button">Entrez une nouvelle entreprise</button></a>
         <br><br>
         <a href="experience.php"><button type="button">Entrez une nouvelle expérience</button></a>
+        <br><br>
+        <a href="add_cmp.html"><button type="button">Entrez une nouvelle compétence</button></a>
         <br><br>
         <a href="poste.html"><button type="button">Entrez un nouveau poste</button></a>
         <br><br>
