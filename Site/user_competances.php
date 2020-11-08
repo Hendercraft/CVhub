@@ -38,12 +38,12 @@ echo '<!DOCTYPE html>
 
 <form method="post" action="add_user_competance.php">
 
-     <label for="competance">Poste: </label>
+     <label for="competance">Compétence: </label>
 
      <select id="competance" required="required" name="competance">
         '.$option.'
      </select>
-     <a href="add_cmp.html"><button type="button">Entrer une nouvelle compétance!</button></a>
+     <a href="add_cmp.html"><button type="button">Entrer une nouvelle Compétence!</button></a>
 
     <br>
     <label for="submit"></label>
