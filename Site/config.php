@@ -18,9 +18,9 @@ if ($conn->connect_error) {
 }
 //echo "Connected successfully<br>";
 
-set_error_handler(function($number,  $message) {
+/*et_error_handler(function($number,  $message) {
     echo "Handler captured error $number: '$message'" . PHP_EOL  ;
-});
+});*/
 
 define('__ROOT__', dirname(__FILE__));
 
@@ -35,10 +35,11 @@ if(strtoupper(substr(PHP_OS, 0, 3)) == 'WIN')
     define('HOME_P',__ROOT__.'\home.html');
     define('CV_HUB',__ROOT__.'\cvhub.html');
     define('ADD_CMP_P',__ROOT__.'\add_cmp.html');
-    define('CV_P1',__ROOT__.'\cv1.html');
-    define('CV_Y',__ROOT__.'\cv_yellow.html');
-    define('CV_R',__ROOT__.'\cv_red.html');
-    define('CV_B',__ROOT__.'\cv_blue.html');
+    define('CV_P1',__ROOT__.'\cv1.php');
+    define('CV_Y',__ROOT__.'\cv_yellow.php');
+    define('CV_R',__ROOT__.'\cv_red.php');
+    define('CV_B',__ROOT__.'\cv_blue.php');
+    define('PDF_P',__ROOT__.'\pdf.php');
     define('EXPERIENCE_P',__ROOT__.'\experience.php');
     define('PERIODE_ETUDE_P',__ROOT__.'\periode_etude.php');
     define('FORMATION_P',__ROOT__.'\formations.php');

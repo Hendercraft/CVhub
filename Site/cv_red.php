@@ -1,5 +1,5 @@
 <?php
-session_set_cookie_params(0);
+error_reporting(0);
 session_start();
 /*
 ini_set('display_errors', 1);
@@ -13,6 +13,8 @@ require('config.php');
 
 
 $id = $_SESSION['id'];
+$_SESSION['cv_path'] = CV_R;
+$css = file_get_contents('css/cv_red.css');
 
 /*$cmp = 'SELECT intitule FROM competences c INNER JOIN  user_competences uc on c.id = uc.competences_id  WHERE uc.user_id ='.$id;
 $r_cmp[0]='test';
@@ -75,9 +77,7 @@ for($i=0;$i<3;$i+=1)
 echo '<html>
     <head>
         <meta content="text/html; charset=UTF-8" http-equiv="content-type">
-        <link rel="stylesheet" type="text/css"
-        media="screen" href="css/cv_red.css" />
-        <link rel="shortcut icon" href="img/favicon.ico" type="image/x-icon">
+        <style>'.$css.'</style>
     </head>
     <body>
         <div class="c17">
