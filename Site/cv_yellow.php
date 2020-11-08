@@ -31,7 +31,7 @@ if($stmt=$conn->query($cmp))
 }*/
 
 $req[0] = 'SELECT intitule FROM competences c INNER JOIN  user_competences uc on c.id = uc.competences_id  WHERE uc.user_id ='.$id;
-$req[1] = 'SELECT intitule,spé,nom,date_d,date_f FROM `formations` AS f INNER JOIN `peridode_etude` AS p ON f.id = p.formation_id INNER JOIN `universite` AS u ON p.universite = u.id  WHERE p.user_id='.$id.' ORDER BY date_d DESC';
+$req[1] = 'SELECT intitule,spe,nom,date_d,date_f FROM `formations` AS f INNER JOIN `peridode_etude` AS p ON f.id = p.formation_id INNER JOIN `universite` AS u ON p.universite = u.id  WHERE p.user_id='.$id.' ORDER BY date_d DESC';
 $req[2] = 'SELECT intitule,nom,ville,date_d,date_f FROM `poste` AS p INNER JOIN `experience_pro` AS exp ON p.id = exp.poste_id INNER JOIN `entreprises` AS e ON exp.entreprise_id = e.id WHERE exp.user_id = '.$id.' ORDER BY date_d DESC';
 $res[0] = '';
 $part[0] = '';

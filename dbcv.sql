@@ -78,7 +78,7 @@ CREATE TABLE `formations` (
   `id` int(11) NOT NULL,
   `intitule` varchar(50) NOT NULL,
   `niveau` int(11) NOT NULL,
-  `spé` varchar(50) DEFAULT NULL
+  `spe` varchar(50) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 -- --------------------------------------------------------
