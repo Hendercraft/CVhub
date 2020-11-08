@@ -188,9 +188,10 @@ $html = '<html>
                 </p>
             </div>
         </div>
+        
     </body>
 </html>';
-require_once('pdf.php');
-echo $html;
 
+echo $html;
+echo '<a href="pdf.php"><button type="button">Téléchargez votre CV</button></a>';
 $conn->close();

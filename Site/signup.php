@@ -123,9 +123,7 @@ $conn->close();
 
 
 
-set_error_handler(function($number,  $message) {
-    echo "Handler captured error $number: '$message'" . PHP_EOL  ;
-});
+
 
 
 
