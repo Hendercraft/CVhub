@@ -35,7 +35,7 @@ if (!is_numeric($_POST['code_postal'] ) ) {
     die ("Code postal invalide: Le code postal doit uniquement être composé de chiffres");
 }
 
-//définition des variables qui vont nous servir à sotcker les informatiosn entré par l'utilisateur
+//Récupération de la méthode POST
 
 $email = $_POST['email'];
 
@@ -68,9 +68,9 @@ $fborn_date = date('Y-m-d',strtotime($born_date));
 
 
 $signup = 'INSERT INTO dbcv.users(nom,prenom,adresse,ville,code_postal,date_naissance,email,password,telephone,linkdin,profile_pic)
-VALUES (?,?,?,?,?,?,?,?,?,?,?)';
+VALUES (?,?,?,?,?,?,?,?,?,?,?)';//requête sql pour l'inscription
 
-$verify = 'SELECT * from `users` WHERE `users`.email LIKE ?';
+$verify = 'SELECT * from `users` WHERE `users`.email LIKE ?';//requête sql vérifiant que l'email n'est pas dékà utilisé
 
 
 if($ver = $conn->prepare($verify))
@@ -84,9 +84,9 @@ if($ver = $conn->prepare($verify))
 
     $ver->store_result();
 
-    if($ver->num_rows !== 0)
+    if($ver->num_rows !== 0)//si l'email est déjà utilisé
     {
-        //echo $ver->num_rows;
+
         echo '<h3 style="color:#ff0000;">Email déjà utilisé</h3><br>';
         require_once(SIGNUP_P);
     }
@@ -97,6 +97,7 @@ if($ver = $conn->prepare($verify))
         if ($stmt = $conn->prepare($signup)) {
             $stmt->bind_param('ssssssssssb',$nom,$firstname,$adresse,$ville,$code_postal,$fborn_date,$email,$mdp,$tel,$lnk,$profile_pic);
 
+            //tant que la photo n'est pas entièrement chargée
             while (!feof($fpic))
 
             {
@@ -107,7 +108,7 @@ if($ver = $conn->prepare($verify))
             fclose($fpic);
             $stmt->execute();
 
-            //echo "<br>New record created successfully";
+
             $stmt->close();
             require_once(INDEX_P);
         } else {

@@ -39,7 +39,7 @@ for($i=0;$i<3;$i+=1)
                 for($j=0;$j<$num_f;$j+=1)//pour chaque champs de chaque ligne
                 {
                     $part[$k] .= "• $row[$j] "; //concaténation de chaque champs d'une ligne
-                    //$part[$k] .= "• $sub_part[$j] ";
+
                 }
 
 
@@ -62,7 +62,7 @@ for($i=0;$i<3;$i+=1)
 
 
 
-//var_dump($_SESSION['profile_pic']);
+
 $html = '<html>
     <head>
         <meta content="text/html; charset=UTF-8" http-equiv="content-type">

@@ -13,7 +13,7 @@ require_once('config.php');
 
 
 $id = $_SESSION['id'];
-$_SESSION['css_path'] = 'css/cv_blue.css';
+$_SESSION['css_path'] = 'css/cv_blue.css';//on envoie le chemin vers le fichier css correspondant dans les variables de sessions
 
 require_once(CV_P1);
 

@@ -60,9 +60,9 @@ $fborn_date = date('Y-m-d',strtotime($born_date));
 
 
 $update = 'UPDATE dbcv.users SET nom=?,prenom=?,adresse=?,ville=?,code_postal=?,date_naissance=?,email=?,password=?,telephone=?,linkdin=?,profile_pic=?
-WHERE users.id = ?';
+WHERE users.id = ?';//requête pour update les informations de l'utilisateur
 
-$verify = 'SELECT * from `users` WHERE `users`.id LIKE ?';
+$verify = 'SELECT * from `users` WHERE `users`.id LIKE ?';//requête vérifiant que l'utilisateur existe
 
 
 if($ver = $conn->prepare($verify))
