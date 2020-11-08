@@ -139,4 +139,6 @@
     //if image file created, display it
     if(file_exists($fimg)) echo '<img src="'. $fimg .'" />';
     else echo 'Unable to create: '. $fimg;
+
+    echo '<a href="home.php"><button type="button">Retour au menu principal</button></a>';
 ?>

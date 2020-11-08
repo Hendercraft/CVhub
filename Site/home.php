@@ -42,7 +42,7 @@ echo '
 <br><br>
 <a href="periode_etude.php"><button type="button">Entrez une nouvelle université/formation</button></a>
 <br><br>
-<a href="user_competances.php"><button type="button">Entrez une nouvelle compétence</button></a>
+<a href="user_competences.php"><button type="button">Entrez une nouvelle compétence</button></a>
 <br><br>
 <a href="update.html"><button type="button">Mettez à jour votre profil</button></a>
 <br><br>
