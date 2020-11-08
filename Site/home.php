@@ -46,6 +46,8 @@ echo '
 <br><br>
 <a href="update.html"><button type="button">Mettez à jour votre profil</button></a>
 <br><br>
+<a href="user_data.php"><button type="button">Supprimez des formations/université/compétences</button></a>
+<br><br>
 <a href="cvhub.html"><button type="button">Créez votre CV!</button></a>
 </body>
 </html>';
