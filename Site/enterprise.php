@@ -50,7 +50,7 @@ if($ver = $conn->prepare($verify)){ //If query was properly prepared
 
             //echo "<br>New record created successfully";
             $stmt->close();
-            require_once(ENTERRISE_P);
+            require_once(ENTERPRISE_P);
             echo "Votre entreprise a bien été ajouté";
         } else {
             echo "Error: " . $addEnterprise . "<br>" . $conn->error;
