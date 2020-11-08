@@ -53,7 +53,7 @@ echo '<!DOCTYPE html>
 
 </form>
 
-<a href="home.html"><button type="button">Retour au menu principal</button></a>
+<a href="home.php"><button type="button">Retour au menu principal</button></a>
 
 
 
