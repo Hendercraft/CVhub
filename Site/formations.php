@@ -2,7 +2,7 @@
 
 
 require_once('config.php');
-session_start();
+//session_start();
 
 $output = '<!-- just a comment so php will not be mad if there is no POST -->';
 
