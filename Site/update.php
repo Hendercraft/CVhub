@@ -102,7 +102,7 @@ if($ver = $conn->prepare($verify))
 
             //echo "<br>New record created successfully";
             $stmt->close();
-            require_once(INDEX_P);
+            require_once(HOME_P);
         } else {
             echo "Error: " . $signup . "<br>" . $conn->error;
         }
