@@ -5,6 +5,7 @@ ini_set('log_errors',1);
 error_reporting(E_ALL);
 mysqli_report(MYSQLI_REPORT_ERROR | MYSQLI_REPORT_STRICT);
 
+session_start();
 require_once('config.php');
 
 
@@ -60,17 +61,17 @@ $fborn_date = date('Y-m-d',strtotime($born_date));
 /*$sql = "INSERT INTO dbcv.users(nom,prenom,adresse,date_naissance,email,password,telephone,linkdin)
 VALUES ('$nom','$firstname','$adresse','$fborn_date','$email','$mdp',$tel,'$lnk')";*/
 
-$signup = 'UPDATE dbcv.users SET nom=?,prenom=?,adresse=?,date_naissance=?,email=?,password=?,telephone=?,linkdin=?,profile_pic=?
+$update = 'UPDATE dbcv.users SET nom=?,prenom=?,adresse=?,ville=?,code_postal=?,date_naissance=?,email=?,password=?,telephone=?,linkdin=?,profile_pic=?
 WHERE users.id = ?';
 
-$verify = 'SELECT * from `users` WHERE `users`.email LIKE ?';
+$verify = 'SELECT * from `users` WHERE `users`.id LIKE ?';
 
 
 if($ver = $conn->prepare($verify))
 {
 
 
-    $ver->bind_param('s',$email);
+    $ver->bind_param('d',$_SESSION['id']);
 
 
     $ver->execute();
@@ -87,14 +88,14 @@ if($ver = $conn->prepare($verify))
     {
         echo $ver->num_rows;
         $ver->close();
-        if ($stmt = $conn->prepare($signup)) {
-            $stmt->bind_param('ssssssssbd',$nom,$firstname,$adresse,$fborn_date,$email,$mdp,$tel,$lnk,$profile_pic,$_SESSION['id']);
+        if ($stmt = $conn->prepare($update)) {
+            $stmt->bind_param('ssssssssssbd',$nom,$firstname,$adresse,$ville,$code_postal,$fborn_date,$email,$mdp,$tel,$lnk,$profile_pic,$_SESSION['id']);
 
             while (!feof($fpic))
 
             {
 
-                $stmt->send_long_data(8, fread($fpic, 1048576));
+                $stmt->send_long_data(10, fread($fpic, 1048576));
 
             }
             fclose($fpic);
@@ -102,9 +103,9 @@ if($ver = $conn->prepare($verify))
 
             //echo "<br>New record created successfully";
             $stmt->close();
-            require_once(HOME_P);
+            require_once(INDEX_P);
         } else {
-            echo "Error: " . $signup . "<br>" . $conn->error;
+            echo "Error: " . $update . "<br>" . $conn->error;
         }
     }
 }

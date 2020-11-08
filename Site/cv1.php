@@ -1,10 +1,11 @@
 <?php
+session_set_cookie_params(0);
 session_start();
-
+/*
 ini_set('display_errors', 1);
 ini_set('log_errors',1);
 error_reporting(E_ALL);
-mysqli_report(MYSQLI_REPORT_ERROR | MYSQLI_REPORT_STRICT);
+mysqli_report(MYSQLI_REPORT_ERROR | MYSQLI_REPORT_STRICT);*/
 
 
 
@@ -31,11 +32,10 @@ if($stmt=$conn->query($cmp))
 
 $req[0] = 'SELECT intitule FROM competences c INNER JOIN  user_competences uc on c.id = uc.competences_id  WHERE uc.user_id ='.$id;
 $req[1] = 'SELECT intitule,spé,nom,date_d,date_f FROM `formations` AS f INNER JOIN `peridode_etude` AS p ON f.id = p.formation_id INNER JOIN `universite` AS u ON p.universite = u.id  WHERE p.user_id='.$id.' ORDER BY date_d DESC';
-/*$req[1] = 'SELECT intitule FROM formations AS f INNER JOIN peridode_etude pe on f.id = pe.formation_id WHERE pe.user_id='.$id;
-$req[2] = 'SELECT spé FROM formations AS f INNER JOIN peridode_etude pe on f.id = pe.formation_id WHERE pe.user_id='.$id;*/
 $req[2] = 'SELECT intitule,nom,ville,date_d,date_f FROM `poste` AS p INNER JOIN `experience_pro` AS exp ON p.id = exp.poste_id INNER JOIN `entreprises` AS e ON exp.entreprise_id = e.id WHERE exp.user_id = '.$id.' ORDER BY date_d DESC';
-$res[0] = ' ';
+$res[0] = '';
 $part[0] = '';
+$row = array();
 $i=0;
 
 for($i=0;$i<3;$i+=1)
@@ -43,35 +43,36 @@ for($i=0;$i<3;$i+=1)
 
     if($stmt = $conn->query($req[$i]))
     {
-        $num_f = $conn->field_count ;
+        $num_f = $conn->field_count ; //nombre de colonnes de la réponse de la requête
         $k = 0;
         while($row = $stmt->fetch_row())
         {
 
-            if(isset($row[0]))
+            if(isset($row[0])) //si on a au moins un résultat
             {
-                for($j=0;$j<$num_f;$j+=1)
+                for($j=0;$j<$num_f;$j+=1)//pour chaque champs de chaque ligne
                 {
-                    $sub_part[$j] = $row[$j];
-                    $part[$k] .= "• $sub_part[$j] ";
+                    $part[$k] .= "• $row[$j] "; //concaténation de chaque champs d'une ligne
+                    //$part[$k] .= "• $sub_part[$j] ";
                 }
-                //echo $num_f;
+
 
             }
             else
             {
-                $res =" ";
+                $res[0]='';
             }
-            $res[$i] .= "<br><br><p class=\"c7\"><span class=\"c3\">$part[$k]</span></p>";
+            $res[$i] .= "<br><br><p class=\"c7\"><span class=\"c3\">$part[$k]</span></p>"; // concaténation d'une ligne à l'ensemble des lignes
             $part[$k] = '';
             $k = $k + 1;
 
 
         }
     }
+    $stmt->close();
 }
 
-$res[2] = "<br>";
+
 
 
 
@@ -176,36 +177,7 @@ echo '<html>
                                 <span class="c0">Exp&eacute;rience</span>
                             </h2>
                             
-                            <p class="c2">
-                                <span class="c34">[Date de d&eacute;but] &ndash; [Date de fin]</span>
-                            </p>
-                            <p class="c8">
-                                <span class="c3">[Intitul&eacute; du poste] &bull; [Fonction] &bull; [Nom de la soci&eacute;t&eacute;]</span>
-                            </p>
-                            <p class="c8 c4">
-                                <span class="c28"></span>
-                            </p>
-                            '.$res[2].'
-                            <p class="c2">
-                                <span class="c34">[Date de d&eacute;but] &ndash; [Date de fin]</span>
-                            </p>
-                            <p class="c8"><span class="c3">[Intitul&eacute; du poste] &bull; [Fonction] &bull; [Nom de la soci&eacute;t&eacute;]</span>
-                            </p>
-                            <p class="c8">
-                                <span class="c28">&nbsp;</span>
-                            </p>
-                            <p class="c2">
-                                <span class="c34">[Date de d&eacute;but] &ndash; [Date de fin]</span>
-                            </p>
-                            <p class="c8">
-                                <span class="c3">[Intitul&eacute; du poste] &bull; [Fonction] &bull; [Nom de la soci&eacute;t&eacute;]</span>
-                            </p>
-                            <p class="c8">
-                                <span class="c28">&nbsp;</span>
-                            </p>
-                            <p class="c8">
-                                <span class="c3">[Indiquez ici un r&eacute;capitulatif de vos principales responsabilit&eacute;s et de vos r&eacute;alisations les plus marquantes.]</span>
-                            </p>
+                           '.$res[2].'
                         </td>
                     </tr>
                     <tr class="c41">

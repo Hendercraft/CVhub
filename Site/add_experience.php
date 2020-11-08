@@ -1,5 +1,8 @@
 <?php
+
+session_set_cookie_params(0);
 session_start();
+
 // Initialisation of error reporting functions
 ini_set('display_errors', 1);
 ini_set('log_errors',1);
@@ -43,14 +46,12 @@ if($ver = $conn->prepare($verify)){ //If query was properly prepared
         $ver->close(); //We close the previous request
         if ($stmt = $conn->prepare($addexperience)) { //Preparing the query to add the data
             $stmt->bind_param('iiiss',$_SESSION['id'],$poste,$entreprise,$startdate,$enddate);//Binding the parameters
-
             $stmt->execute();
-
             $stmt->close();
             require_once(EXPERIENCE_P);
             echo "Votre experience a bien été ajouté";
         } else {
-            echo "Error: " . $addformation . "<br>" . $conn->error;
+            echo "Error: " . $addexperience . "<br>" . $conn->error;
         }
     }
 }
