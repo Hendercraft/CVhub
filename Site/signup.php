@@ -8,16 +8,22 @@ mysqli_report(MYSQLI_REPORT_ERROR | MYSQLI_REPORT_STRICT);
 require_once('config.php');
 
 
-
+//Les lignes suivantes vont nous permettre de retourner une erreur si le texte rentré n'est pas conforme
 if (!preg_match(" #^[a-zA-Z]+$# ",$_POST['nom'] ) || !preg_match(" #^[a-zA-Z]+$# ",$_POST['prenom'] )) {
+    //ici nous indiquons que le texte toi contenir un début (#^),une fin(+$#)et ne soit composé que de lettre s
+    //majuscule et minuscule([a-zA-Z])
     die ("Nom invalide: Le nom et prénom doivent uniquement être composé de lettres");
 }
 
 if ( !preg_match ( " /^.+@.+\.[a-zA-Z]{2,}$/ " ,$_POST['email'])){
+    //ici l'utilisateur peut rentrer tout ce qu'il veut suivi d'un "@" puis a nouveau ce qu'il veut, puis un '.',
+    // puis au moins 2 caractere constitué de lettres
     die("Email invalide: L'email doit être formé de la manière suivante: example@test.com");
 }
 
 if ( !preg_match ( " #^[0-9]{2}[-/ ]?[0-9]{2}[-/ ]?[0-9]{2}[-/ ]?[0-9]{2}[-/ ]?[0-9]{2}?$# " , $_POST['tel'] ) ){
+    //ici nous allons vérifer que l'utilisateur entre 5 fois une combinaison de deux chiffres:
+    // et entre ces combinaisons il peut mettre un espace un itret ou rien du tout
     die("Numéro invalide: Veuillez entrez un numéro de téléphone valide");
 }
 
@@ -28,6 +34,8 @@ if (!preg_match(" #^[a-zA-Z]+$# ",$_POST['ville'] ) ) {
 if (!is_numeric($_POST['code_postal'] ) ) {
     die ("Code postal invalide: Le code postal doit uniquement être composé de chiffres");
 }
+
+//définition des variables qui vont nous servir à sotcker les informatiosn entré par l'utilisateur
 
 $email = $_POST['email'];
 
