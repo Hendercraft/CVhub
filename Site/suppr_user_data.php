@@ -17,7 +17,9 @@ if (isset($_POST['supprexp'])) {
     if ($delete = $conn->prepare($delete)) {
         $delete->bind_param('i', $expid);
         $delete->execute();
-        $delete->close;
+        $delete->close();
+        require_once(USER_DATA_P);
+        echo "Votre expérience à été surprimée avec succès";
     }
 }
 
@@ -28,7 +30,9 @@ if (isset($_POST['suppretude'])) {
     if ($delete = $conn->prepare($delete)) {
         $delete->bind_param('i', $etudeid);
         $delete->execute();
-        $delete->close;
+        $delete->close();
+        require_once(USER_DATA_P);
+        echo "Votre période d\'étude à été surprimée avec succès";
     }
 }
 
@@ -52,6 +56,10 @@ if (isset($_POST['supprcomp'])) { //We don't have a primary key here
     if ($delete = $conn->prepare($delete)) {
         $delete->bind_param('ii', $userid,$compid);
         $delete->execute();
-        $delete->close;
+        $delete->close();
+        require_once(USER_DATA_P);
+        echo "Votre compétence avec succès";
     }
 }
+
+;

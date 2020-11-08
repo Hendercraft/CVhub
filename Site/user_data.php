@@ -184,7 +184,7 @@ echo '<!DOCTYPE html>
 
 </form>
 
-<form method="post" action="asuppr_user_data.php">
+<form method="post" action="suppr_user_data.php">
     <h2>Supprimer une période d\'étude </h2>
      <label for="etude">Période d\'Étude: </label>
 
