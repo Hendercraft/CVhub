@@ -14,7 +14,7 @@ require_once('config.php');
 
 $id = $_SESSION['id'];
 
-$css = file_get_contents('css/cv_red.css');
+$css = file_get_contents($_SESSION['css_path']);
 /*$cmp = 'SELECT intitule FROM competences c INNER JOIN  user_competences uc on c.id = uc.competences_id  WHERE uc.user_id ='.$id;
 $r_cmp[0]='test';
 

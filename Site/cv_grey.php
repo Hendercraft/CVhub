@@ -13,6 +13,9 @@ require_once('config.php');
 
 
 $id = $_SESSION['id'];
-$_SESSION['css_path'] = 'css/cv_yellow.css';
+$_SESSION['css_path'] = 'css/cv1.css';
 
 require_once(CV_P1);
+
+
+
