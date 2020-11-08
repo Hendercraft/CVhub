@@ -10,19 +10,25 @@ require_once('config.php');
 
 
 if (!preg_match(" #^[a-zA-Z]+$# ",$_POST['nom'] ) || !preg_match(" #^[a-zA-Z]+$# ",$_POST['prenom'] )) {
-    die ("invalid name , name should be only composed of letters");
+    die ("Nom invalide: Le nom et prénom doivent uniquement être composé de lettres");
 }
 
-if( $_POST["email"]){
-    if ( !preg_match ( " /^.+@.+\.[a-zA-Z]{2,}$/ " ,$_POST['email'])){
-        die("invalide Email, email should be be composed like example@test.com");
-    }
+if ( !preg_match ( " /^.+@.+\.[a-zA-Z]{2,}$/ " ,$_POST['email'])){
+    die("Email invalide: L'email doit être formé de la manière suivante: example@test.com");
 }
-if( $_POST["tel"]){
-    if ( !preg_match ( " #^[0-9]{2}[-/ ]?[0-9]{2}[-/ ]?[0-9]{2}[-/ ]?[0-9]{2}[-/ ]?[0-9]{2}?$# " , $_POST['tel'] ) ){
-        die("invalid phone number, please enter a valid phone number");
-    }
+
+if ( !preg_match ( " #^[0-9]{2}[-/ ]?[0-9]{2}[-/ ]?[0-9]{2}[-/ ]?[0-9]{2}[-/ ]?[0-9]{2}?$# " , $_POST['tel'] ) ){
+    die("Numéro invalide: Veuillez entrez un numéro de téléphone valide");
 }
+
+if (!preg_match(" #^[a-zA-Z]+$# ",$_POST['ville'] ) ) {
+    die ("Nom de ville invalide: Le nom de ville doit uniquement être composé de lettres");
+}
+
+if (!is_numeric($_POST['code_postal'] ) ) {
+    die ("Code postal invalide: Le code postal doit uniquement être composé de chiffres");
+}
+
 $email = $_POST['email'];
 
 $firstname = $_POST['prenom'];

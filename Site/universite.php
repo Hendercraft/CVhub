@@ -50,7 +50,8 @@ if($ver = $conn->prepare($verify)){ //If query was properly prepared
 
             //echo "<br>New record created successfully";
             $stmt->close();
-            require_once(INDEX_P);
+            require_once(UNIVERSITE_P);
+            echo "Votre université a bien été ajouté";
         } else {
             echo "Error: " . $addUniversity . "<br>" . $conn->error;
         }

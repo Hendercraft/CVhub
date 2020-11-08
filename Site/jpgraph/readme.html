@@ -1,0 +1,314 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<title>JpGraph - Create Graph, Charts, Plots in PHP</title>
+<meta name="description" content="JpGraph, a PHP library to Create various type of Graph, charts and plots in PHP" />
+<style>
+body, html {background-color:#fdfdfd;margin:1px 4px;padding:0;font-size:1em;font-family:"Calibri",sans-serif;}
+.sb {font-weight:700;}
+.su {text-decoration:underline;}
+.sbi {font-weight:700;font-style:oblique;}
+.si {font-style:oblique;}
+.cb {color:#0000eb;}
+.cr {color:#eb0000;}
+h1 {text-align:center;}
+h1, h3, h4 {
+ margin:1em;
+ text-decoration:underline;
+}
+pre {width:99%;max-height:550px;background:#fefebb;font-size:15px; font-weight:bold; color:blue;padding:3px 4px;overflow:auto;}
+blockquote {background:#ebebfe;padding:2px 3px;font-size:17px;}
+#mp {
+ display:block;
+ margin:1.5em auto;
+ text-align:center;
+}
+</style>
+</head>
+<body>
+<h1>JpGraph - Create Graph, Charts, Plots in PHP</h1>
+<strong>JpGraph is a PHP library with classes to create various type of Graph, Charts and Plots</strong>: spline curves, radar, line plots, pie, bars with gradients and 3D view, and other types. This is the version 4.0.2.<br>
+It is easy to use, with a good documentation and many examples. To see the documentation, access the "<span class="sbi">docs/</span>" folder.
+<h3>JpGraph Installation and Usage</h3>
+<ol>
+ <li>Copy the <span class="sbi">jpgraph</span> folder with all its content on your server.</li>
+ <li>In the php file where you want to use the JpGraph library, include the "<span class="sb">jpgraph/jpgraph.php</span>" file, and the other classes according to the graph you want to make.<br>
+ - Like in this code:
+<pre class="code">
+//include the jpgraph class, and the class for bar chart
+require 'jpgraph/jpgraph.php';
+require 'jpgraph/jpgraph_bar.php';
+
+//array with data for chart
+$datay=[13,8,19,7,17,6];
+
+//now you can use the Graph and BarPlot classes to create the graph
+$graph = new Graph(350,250);
+$bplot = new BarPlot($datay);
+//etc..
+</pre></li>
+</ol>
+ To output an image with the graph, apply the <span class="sb">Stroke()</span> method.<br>
+ - If you call this method without an argument, the script will output directly the image with the chart set in "graph" object.
+<pre class="code">$graph-&gt;Stroke();</pre>
+ - If the function is called with a string with a valid image name (JPG, PNG, GIF), the method will save the image with the graph in the specified filename
+<pre class="code">$graph-&gt;Stroke('dir/image.png');</pre>
+Here are some examples with JpGraph.<br>
+<h4>Create a bar graph</h4>
+- This code will create a bar-chart with gradient color; and displays directly the image.
+<pre class="code">
+//include needed jpgraph classes
+require 'jpgraph/jpgraph.php';
+require 'jpgraph/jpgraph_bar.php';
+
+//array with data for chart
+$datay1=[13,8,19,7,17,6];
+$datay2=[4,5,2,7,5,25];
+ 
+// Create the graph
+$graph = new Graph(350,250);
+$graph-&gt;SetScale('textlin');
+$graph-&gt;SetMarginColor('white');
+ 
+// Setup title
+$graph-&gt;title-&gt;Set('Acc bar with gradient');
+ 
+// Create the first bar
+$bplot = new BarPlot($datay1);
+$bplot-&gt;SetFillGradient('AntiqueWhite2','AntiqueWhite4:0.8',GRAD_VERT);
+$bplot-&gt;SetColor('darkred');
+ 
+// Create the second bar
+$bplot2 = new BarPlot($datay2);
+$bplot2-&gt;SetFillGradient('olivedrab1','olivedrab4',GRAD_VERT);
+$bplot2-&gt;SetColor('darkgreen');
+ 
+// And join them in an accumulated bar
+$accbplot = new AccBarPlot([$bplot,$bplot2]);
+$graph-&gt;Add($accbplot);
+
+// Display the graph
+$graph-&gt;Stroke();
+</pre>
+<h4>Pie plot with center circle</h4>
+- Makes a pie plot with a center circle and a text in center.
+<pre class="code">
+//include needed jpgraph classes
+require 'jpgraph/jpgraph.php';
+require 'jpgraph/jpgraph_pie.php';
+ 
+// Some data
+$data =[50,28,25,27,31,20];
+ 
+//pie graph object
+$graph = new PieGraph(320,320,'auto');
+ 
+// Don't display the border
+$graph-&gt;SetFrame(false);
+ 
+// Uncomment this line to add a drop shadow to the border
+// $graph-&gt;SetShadow();
+
+// Setup title
+$graph-&gt;title-&gt;Set('Pie plot with center circle');
+$graph-&gt;title-&gt;SetFont(FF_ARIAL,FS_BOLD,18);
+$graph-&gt;title-&gt;SetMargin(8); // Add a little bit more margin from the top
+ 
+// Create the pie plot
+$p1 = new PiePlotC($data);
+ 
+// Set size of pie
+$p1-&gt;SetSize(0.35);
+ 
+// Label font and color setup
+$p1-&gt;value-&gt;SetFont(FF_ARIAL,FS_BOLD,12);
+$p1-&gt;value-&gt;SetColor('white');
+ 
+$p1-&gt;value-&gt;Show();
+ 
+// Setup the title on the center circle
+$p1-&gt;midtitle-&gt;Set(&quot;Test mid\nRow 1\nRow 2&quot;);
+$p1-&gt;midtitle-&gt;SetFont(FF_ARIAL,FS_NORMAL,14);
+ 
+// Set color for mid circle
+$p1-&gt;SetMidColor('yellow');
+ 
+// Use percentage values in the legends values (This is also the default)
+$p1-&gt;SetLabelType(PIE_VALUE_PER);
+ 
+// The label array values may have printf() formatting in them. The argument to the
+// form, at string will be the value of the slice (either the percetage or absolute
+// depending on what was specified in the SetLabelType() above.
+$lbl =[&quot;adam\n%.1f%%&quot;,&quot;bertil\n%.1f%%&quot;,&quot;johan\n%.1f%%&quot;, &quot;peter\n%.1f%%&quot;,&quot;daniel\n%.1f%%&quot;,&quot;erik\n%.1f%%&quot;];
+$p1-&gt;SetLabels($lbl);
+ 
+// Uncomment this line to remove the borders around the slices
+// $p1-&gt;ShowBorder(false);
+ 
+// Add drop shadow to slices
+$p1-&gt;SetShadow();
+ 
+// Explode all slices 15 pixels
+$p1-&gt;ExplodeAll(15);
+ 
+// Add plot to pie graph
+$graph-&gt;Add($p1);
+ 
+//send the image to the browser
+$graph-&gt;Stroke();
+</pre>
+<h4>A simple 3D Pie plot</h4>
+- Creates a 3D pie graph with a predefined theme, and saves the image in a file on server. Then it displays the image.
+<pre class="code">
+//include needed jpgraph classes
+require 'jpgraph/jpgraph.php';
+require 'jpgraph/jpgraph_pie.php';
+require 'jpgraph/jpgraph_pie3d.php';
+
+//image filename to save the chart
+$fimg ='jpgraph-3d_pie.png';
+
+//set chart data
+$data =[40,60,25,34];
+
+$graph = new PieGraph(320,220);
+
+//customize the chart, using a predefined theme
+$theme_class= new VividTheme;
+$graph-&gt;SetTheme($theme_class);
+$graph-&gt;SetShadow();
+ 
+$graph-&gt;title-&gt;Set('A simple 3D Pie plot');
+$graph-&gt;title-&gt;SetFont(FF_FONT1,FS_BOLD);
+
+//define data in chart
+$p1 = new PiePlot3D($data);
+$p1-&gt;ExplodeSlice(1); //separate slice 1
+$p1-&gt;SetCenter(0.5);
+$p1-&gt;SetLegends(['May','June','July','Aug']);
+$graph-&gt;legend-&gt;Pos(.088,0.9);
+
+//add and save the chart
+$graph-&gt;Add($p1);
+$graph-&gt;Stroke($fimg);
+
+//if image file created, display it
+if(file_exists($fimg)) echo '&lt;img src=&quot;'. $fimg .'&quot; /&gt;';
+else echo 'Unable to create: '. $fimg;
+</pre>
+<h4>Line Plots With Inverted Y-axis</h4>
+<pre class="code">
+//include needed jpgraph classes
+require 'jpgraph/jpgraph.php';
+require 'jpgraph/jpgraph_line.php';
+
+//set chart data
+$datay =[0,25,12,47,27,27,0];
+
+// Setup the graph
+$graph = new Graph(350,250);
+$graph-&gt;SetScale('intlin',0,$aYMax=50);
+
+//use a predefined theme
+$theme_class= new UniversalTheme;
+$graph-&gt;SetTheme($theme_class);
+
+$graph-&gt;SetMargin(40,40,50,40);
+
+$graph-&gt;title-&gt;Set('Inverted Y-axis');
+$graph-&gt;SetBox(false);
+$graph-&gt;yaxis-&gt;HideLine(false);
+$graph-&gt;yaxis-&gt;HideTicks(false,false);
+
+// For background to be gradient, setfill is needed first
+$graph-&gt;ygrid-&gt;SetFill(true,'#FFFFFF@0.5','#FFFFFF@0.5');
+$graph-&gt;SetBackgroundGradient('#FFFFFF', '#00FF7F', GRAD_HOR, BGRAD_PLOT);
+
+//set labels
+$graph-&gt;xaxis-&gt;SetTickLabels(['G','F','E','D','C','B','A']);
+$graph-&gt;xaxis-&gt;SetLabelMargin(20);
+$graph-&gt;yaxis-&gt;SetLabelMargin(20);
+
+$graph-&gt;SetAxisStyle(AXSTYLE_BOXOUT);
+$graph-&gt;img-&gt;SetAngle(180); 
+
+// Create the line
+$p1 = new LinePlot($datay);
+$graph-&gt;Add($p1);
+
+$p1-&gt;SetFillGradient('#FFFFFF','#F0F8FF');
+$p1-&gt;SetColor('#aadddd');
+
+//save the graph in a file on server
+$graph-&gt;Stroke('jpgraph-line_plot_inverted_y.png');
+</pre>
+<h4>Radar with marks</h4>
+- We show a radar graph with added plot-marks.
+<pre class="code">
+//include needed jpgraph classes
+require 'jpgraph/jpgraph.php';
+require 'jpgraph/jpgraph_radar.php';
+
+//arrays with labels and data for chart
+$titles=['Planning','Quality','Time','RR','CR','DR'];
+$data=[18, 40, 70, 90, 42,66];
+ 
+$graph = new RadarGraph (300,280);
+
+//define title
+$graph-&gt;title-&gt;Set('Radar with marks');
+$graph-&gt;title-&gt;SetFont(FF_VERDANA,FS_NORMAL,12);
+ 
+$graph-&gt;SetTitles($titles);
+$graph-&gt;SetCenter(0.5,0.55);
+$graph-&gt;HideTickMarks();
+$graph-&gt;SetColor('lightgreen@0.7');
+$graph-&gt;axis-&gt;SetColor('darkgray');
+$graph-&gt;grid-&gt;SetColor('darkgray');
+$graph-&gt;grid-&gt;Show();
+ 
+$graph-&gt;axis-&gt;title-&gt;SetFont(FF_ARIAL,FS_NORMAL,12);
+$graph-&gt;axis-&gt;title-&gt;SetMargin(5);
+$graph-&gt;SetGridDepth(DEPTH_BACK);
+$graph-&gt;SetSize(0.6);
+ 
+$plot = new RadarPlot($data);
+$plot-&gt;SetColor('red@0.2');
+$plot-&gt;SetLineWeight(1);
+$plot-&gt;SetFillColor('red@0.7');
+ 
+$plot-&gt;mark-&gt;SetType(MARK_IMG_SBALL,'red');
+
+//adds the created plot and send it to browser
+$graph-&gt;Add($plot);
+$graph-&gt;Stroke();
+</pre>
+<br><hr><br>
+ &bull; Scipt from: <a href="http://coursesweb.net/php-mysql/jpgraph-graph-charts-plots-php" title="JpGraph - Create Graph, Charts, Plots in PHP">http://coursesweb.net/php-mysql/jpgraph-graph-charts-plots-php</a><br>
+ &bull; Home Page: <a href="http://jpgraph.net/" title="JpGraph - Driven Charts">JpGraph - Driven Charts</a><br><br>
+ - <span class="si">A good way to get started and to learn is to run and study some of the samples.</span>
+ <span class="sbi" id="mp">Have a Happy Life with Everyone.</span>
+<script>
+// <![CDATA[
+function selectElmCnt(elm) {
+  if(document.body.createTextRange) {
+    var range = document.body.createTextRange();
+    range.moveToElementText(elm);
+    range.select();
+  }
+  else if(window.getSelection) {
+    var selection = window.getSelection();
+    var range = document.createRange();
+    range.selectNodeContents(elm);
+    selection.removeAllRanges();
+    selection.addRange(range);
+  }
+}
+var pre_code = document.querySelectorAll('pre.code');
+var nr_pc = pre_code.length;
+for(var i=0; i<nr_pc; i++) pre_code[i].onclick = function(){ selectElmCnt(this); }
+// ]]>
+</script>
+</body>
+</html>

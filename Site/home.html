@@ -13,7 +13,7 @@
             if(session_status() === PHP_SESSION_ACTIVE)
             {
                 if($_SESSION['loggedin'] === TRUE){
-                    echo 'You are logged in as '.$_SESSION['nom'] .' ' .$_SESSION['prenom'] ;
+                    echo 'Vous êtes connectés en tant que '.$_SESSION['nom'] .' ' .$_SESSION['prenom'] ;
                     if($_SESSION['email'] == "admin@admin.admin"){
                         echo ' <a href="stats.php">Statistique de votre site</a> ';
                     }
@@ -31,16 +31,16 @@
         ?>
         </p>
         <br><br>
-        <a href="enterprise.html">entrez une nouvelle enterprise</a>
+        <a href="enterprise.html"><button type="button">Entrez une nouvelle entreprise</button></a>
         <br><br>
-        <a href="experience.html">Entrez une nouvelle expérience</a>
+        <a href="experience.php"><button type="button">Entrez une nouvelle expérience</button></a>
         <br><br>
-        <a href="poste.html">Entrez un nouveau poste</a>
+        <a href="poste.html"><button type="button">Entrez un nouveau poste</button></a>
         <br><br>
-        <a href="universite.html">Entrez une nouvelle université</a>
+        <a href="universite.html"><button type="button">Entrez une nouvelle université</button></a>
         <br><br>
-        <a href="update.html">Mettez à jour votre profil</a>
+        <a href="update.html"><button type="button">Mettez à jour votre profil</button></a>
         <br><br>
-        <a href="cvhub.html">Créez votre CV!</a>
+        <a href="cvhub.html"><button type="button">Créez votre CV!</button></a>
     </body>
 </html>

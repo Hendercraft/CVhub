@@ -44,29 +44,30 @@ echo '<!DOCTYPE html>
 <head>
     <meta charset="UTF-8">
     <title>Sign Up</title>
-    <link rel="stylesheet" href="main.css">
+    <link rel="stylesheet" href="css/main.css">
     <link rel="shortcut icon" href="favicon.ico" type="image/x-icon">
 </head>
 
 <body>
-<img src="logo.png" alt="Un magnifique logo" width="257" height="110">
+<img src="img/logo.png" alt="Un magnifique logo" width="257" height="110">
 <p>
 
-<form method="post" action="signup.php">
+<form method="post" action="add_experience.php">
 
      <label for="poste">Poste: </label>
 
      <select id="poste" required="required" name="poste">
         '.$option1.'
      </select>
+     <a href="poste.html"><button type="button">Entrez un nouveau poste!</button></a>
     <br>
     
     <label for="entreprise">Entreprise: </label>
 
-     <select id="entreprise" required="required" name="poste">
+     <select id="entreprise" required="required" name="entreprise">
         '.$option.'
      </select>
-
+    <a href="enterprise.html"><button type="button">Entrez une nouvelle entreprise!</button></a>
     <br>
 
     <label for="startdate">Date de début: </label>
@@ -85,7 +86,7 @@ echo '<!DOCTYPE html>
 
 </form>
 
-
+<a href="home.html"><button type="button">Retour au menu principal</button></a>
 
 
 

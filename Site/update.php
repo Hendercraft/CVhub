@@ -8,12 +8,26 @@ mysqli_report(MYSQLI_REPORT_ERROR | MYSQLI_REPORT_STRICT);
 require_once('config.php');
 
 
-if( $_POST["nom"] || $_POST["prenom"] ) {
-    if (preg_match("/[^A-Za-z'-]/",$_POST['nom'] ) && preg_match("/[^A-Za-z'-]/",$_POST['prenom'] )) {
-        die ("invalid name , name should be only composed of letters");
-    }
-
+if (!preg_match(" #^[a-zA-Z]+$# ",$_POST['nom'] ) || !preg_match(" #^[a-zA-Z]+$# ",$_POST['prenom'] )) {
+    die ("Nom invalide: Le nom et prénom doivent uniquement être composé de lettres");
 }
+
+if ( !preg_match ( " /^.+@.+\.[a-zA-Z]{2,}$/ " ,$_POST['email'])){
+    die("Email invalide: L'email doit être formé de la manière suivante: example@test.com");
+}
+
+if ( !preg_match ( " #^[0-9]{2}[-/ ]?[0-9]{2}[-/ ]?[0-9]{2}[-/ ]?[0-9]{2}[-/ ]?[0-9]{2}?$# " , $_POST['tel'] ) ){
+    die("Numéro invalide: Veuillez entrez un numéro de téléphone valide");
+}
+
+if (!preg_match(" #^[a-zA-Z]+$# ",$_POST['ville'] ) ) {
+    die ("Nom de ville invalide: Le nom de ville doit uniquement être composé de lettres");
+}
+
+if (!is_numeric($_POST['code_postal'] ) ) {
+    die ("Code postal invalide: Le code postal doit uniquement être composé de chiffres");
+}
+
 $email = $_POST['email'];
 
 $firstname = $_POST['prenom'];
@@ -24,10 +38,18 @@ $tel = intval($_POST['tel']);
 
 $adresse = $_POST['adresse'];
 
+$ville = $_POST['ville'];
+
+$code_postal = $_POST['code_postal'];
+
 $lnk = $_POST['lnk'];
 
-$profile_pic = $_POST['img'];
-$fpic = fopen($profile_pic,'r');
+
+
+$profile_pic = $_FILES['img']['name'];
+$convert_to_base64 = base64_encode(file_get_contents($_FILES['img']['tmp_name']));
+$base64_image = "data:image/jpeg;base64,".$convert_to_base64;
+$fpic = fopen($base64_image,'r');
 
 $mdp = password_hash($_POST['mdp'],PASSWORD_DEFAULT );
 
@@ -80,7 +102,7 @@ if($ver = $conn->prepare($verify))
 
             //echo "<br>New record created successfully";
             $stmt->close();
-            require_once(INDEX_P);
+            require_once(HOME_P);
         } else {
             echo "Error: " . $signup . "<br>" . $conn->error;
         }

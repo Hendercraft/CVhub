@@ -2,7 +2,6 @@
 
 
 require_once('config.php');
-session_start();
 /**Setting Up the MYSQL Query**/
 $formationsList = 'SELECT * from `formations`';
 $universityList = 'SELECT * from `universite`';
@@ -17,7 +16,7 @@ if($formationsList = $conn->prepare($formationsList)){
         $tempid = $row['id'];
         $tempint = $row['intitule'];
         $templevel= $row['niveau'];
-        $tempspe = $row['spé'];
+        $tempspe = $row['spe'];
         $option .= "<option value = \"$tempid\" >$tempint Bac +$templevel spé $tempspe </option> ";
 
     }
@@ -46,12 +45,12 @@ echo '<!DOCTYPE html>
 <head>
     <meta charset="UTF-8">
     <title>Sign Up</title>
-    <link rel="stylesheet" href="main.css">
+    <link rel="stylesheet" href="css/main.css">
     <link rel="shortcut icon" href="favicon.ico" type="image/x-icon">
 </head>
 
 <body>
-<img src="logo.png" alt="Un magnifique logo" width="257" height="110">
+<img src="img/logo.png" alt="Un magnifique logo" width="257" height="110">
 <p>
 
 <form method="post" action="signup.php">
@@ -61,6 +60,8 @@ echo '<!DOCTYPE html>
      <select id="university" required="required" name="university">
         '.$option1.'
      </select>
+     <a href="universite.html"><button type="button">Entrez une nouvelle universite!</button></a>
+
     <br>
     
     <label for="formation">Formation: </label>
@@ -68,22 +69,24 @@ echo '<!DOCTYPE html>
      <select id="formation" required="required" name="formation">
         '.$option.'
      </select>
-
+     <a href="formations.php"><button type="button">Entrez une nouvelle formation!</button></a>
     <br>
 
     <label for="startdate">Date de début: </label>
     <input name="startdate" id="startdate" type="date" required="required"/>
 
     <br>
+    <br>
+    
 
     <label for="enddate">Date de fin: </label>
     <input name="enddate" id="enddate" type="date" required="required"/>
-
+    
     <br>
     <label for="submit"></label>
     <input name="submit" id="submit" class="submit-b" type="submit" value="Submit"/>
 
-    <br>
+   
 
 </form>
 
