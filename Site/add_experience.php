@@ -47,7 +47,8 @@ if($ver = $conn->prepare($verify)){ //If query was properly prepared
             $stmt->execute();
 
             $stmt->close();
-            require_once(INDEX_P);
+            require_once(EXPERIENCE_P);
+            echo "Votre experience a bien été ajouté";
         } else {
             echo "Error: " . $addformation . "<br>" . $conn->error;
         }

@@ -49,7 +49,8 @@ if($ver = $conn->prepare($verify)){ //If query was properly prepared
 
             //echo "<br>New record created successfully";
             $stmt->close();
-            require_once(HOME_P);
+            require_once(POSTE_P);
+            echo "Votre poste a bien été ajouté";
         } else {
             echo "Error: " . $addPoste . "<br>" . $conn->error;
         }
