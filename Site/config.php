@@ -42,7 +42,7 @@ if(strtoupper(substr(PHP_OS, 0, 3)) == 'WIN')
     define('EXPERIENCE_P',__ROOT__.'\experience.php');
     define('PERIODE_ETUDE_P',__ROOT__.'\periode_etude.php');
     define('FORMATION_P',__ROOT__.'\formations.php');
-    define('USER_COMPETANCES_P',__ROOT__.'\user_competances.php');
+    define('USER_COMPETENCES_P',__ROOT__.'\user_competences.php');
 
 
 
@@ -65,5 +65,5 @@ if(strtoupper(substr(PHP_OS, 0, 3)) == 'WIN')
     define('EXPERIENCE_P',__ROOT__.'/experience.php');
     define('PERIODE_ETUDE_P',__ROOT__.'/periode_etude.php');
     define('FORMATION_P',__ROOT__.'/formations.php');
-    define('USER_COMPETANCES_P',__ROOT__.'/user_competances.php');
+    define('USER_COMPETENCES_P',__ROOT__.'/user_competences.php');
 }

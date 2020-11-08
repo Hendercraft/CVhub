@@ -36,11 +36,11 @@ echo '<!DOCTYPE html>
 <img src="img/logo.png" alt="Un magnifique logo" width="257" height="110">
 <p>
 
-<form method="post" action="add_user_competance.php">
+<form method="post" action="add_user_competence.php">
 
-     <label for="competance">Compétence: </label>
+     <label for="competence">Compétence: </label>
 
-     <select id="competance" required="required" name="competance">
+     <select id="competence" required="required" name="competence">
         '.$option.'
      </select>
      <a href="add_cmp.html"><button type="button">Entrer une nouvelle Compétence!</button></a>
