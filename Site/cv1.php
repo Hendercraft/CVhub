@@ -190,7 +190,7 @@ $html = '<html>
         </div>
     </body>
 </html>';
-
+require_once('pdf.php');
 echo $html;
 
 $conn->close();
