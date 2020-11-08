@@ -32,7 +32,7 @@ if(strtoupper(substr(PHP_OS, 0, 3)) == 'WIN')
     define('UNIVERSITE_P',__ROOT__.'\universite.html');
     define('ENTERPRISE_P',__ROOT__.'\enterprise.html');
     define('POSTE_P',__ROOT__.'\poste.html');
-    define('HOME_P',__ROOT__.'\home.html');
+    define('HOME_P',__ROOT__.'\home.php');
     define('CV_HUB',__ROOT__.'\cvhub.html');
     define('ADD_CMP_P',__ROOT__.'\add_cmp.html');
     define('CV_P1',__ROOT__.'\cv1.html');
@@ -55,7 +55,7 @@ if(strtoupper(substr(PHP_OS, 0, 3)) == 'WIN')
     define('UNIVERSITE_P',__ROOT__.'/universite.html');
     define('ENTERPRISE_P',__ROOT__.'/enterprise.html');
     define('POSTE_P',__ROOT__.'/poste.html');
-    define('HOME_P',__ROOT__.'/home.html');
+    define('HOME_P',__ROOT__.'/home.php');
     define('CV_HUB',__ROOT__.'/cvhub.html');
     define('ADD_CMP_P',__ROOT__.'/add_cmp.html');
     define('CV_P1',__ROOT__.'/cv1.html');

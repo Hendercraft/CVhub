@@ -86,7 +86,7 @@ echo '<!DOCTYPE html>
     <label for="submit"></label>
     <input name="submit" id="submit" class="submit-b" type="submit" value="Submit"/>
 
-    <a href="home.html"><button type="button">Retour au menu principal</button></a>
+    <a href="home.php"><button type="button">Retour au menu principal</button></a>
 
 </form>
 
