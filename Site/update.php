@@ -1,5 +1,5 @@
 <?php
-
+//cette page est une réedition de la page signup.html permettant de modifier les variable de session enregistré
 ini_set('display_errors', 1);
 ini_set('log_errors',1);
 error_reporting(E_ALL);
@@ -58,8 +58,6 @@ $mdp = password_hash($_POST['mdp'],PASSWORD_DEFAULT );
 $born_date = html_entity_decode($_POST['born_date']);
 $fborn_date = date('Y-m-d',strtotime($born_date));
 
-/*$sql = "INSERT INTO dbcv.users(nom,prenom,adresse,date_naissance,email,password,telephone,linkdin)
-VALUES ('$nom','$firstname','$adresse','$fborn_date','$email','$mdp',$tel,'$lnk')";*/
 
 $update = 'UPDATE dbcv.users SET nom=?,prenom=?,adresse=?,ville=?,code_postal=?,date_naissance=?,email=?,password=?,telephone=?,linkdin=?,profile_pic=?
 WHERE users.id = ?';
@@ -80,7 +78,6 @@ if($ver = $conn->prepare($verify))
 
     if($ver->num_rows == 0)
     {
-        //echo $ver->num_rows;
         echo '<h3 style="color:#ff0000;">Please Login before</h3><br>';
         require_once(LOGIN_P);
     }
@@ -101,7 +98,6 @@ if($ver = $conn->prepare($verify))
             fclose($fpic);
             $stmt->execute();
 
-            //echo "<br>New record created successfully";
             $stmt->close();
             require_once(INDEX_P);
         } else {
@@ -111,10 +107,7 @@ if($ver = $conn->prepare($verify))
 }
 
 
-
-
 $conn->close();
-
 
 
 set_error_handler(function($number,  $message) {
@@ -122,7 +115,3 @@ set_error_handler(function($number,  $message) {
 });
 
 
-
-
-//header('http://'.__ROOT__.'\index.html');
-//phpinfo();

@@ -1,5 +1,5 @@
 <?php
-session_set_cookie_params(0);
+error_reporting(0);
 session_start();
 /*
 ini_set('display_errors', 1);
@@ -9,26 +9,12 @@ mysqli_report(MYSQLI_REPORT_ERROR | MYSQLI_REPORT_STRICT);*/
 
 
 
-require('config.php');
+require_once('config.php');
 
 
 $id = $_SESSION['id'];
 
-/*$cmp = 'SELECT intitule FROM competences c INNER JOIN  user_competences uc on c.id = uc.competences_id  WHERE uc.user_id ='.$id;
-$r_cmp[0]='test';
-
-
-if($stmt=$conn->query($cmp))
-{
-    $i=0;
-
-    while($row = $stmt->fetch_row())
-    {
-        $r_cmp[$i] = $row[0];
-
-        $i+=1;
-    }
-}*/
+$css = file_get_contents($_SESSION['css_path']);
 
 $req[0] = 'SELECT intitule FROM competences c INNER JOIN  user_competences uc on c.id = uc.competences_id  WHERE uc.user_id ='.$id;
 $req[1] = 'SELECT intitule,spe,nom,date_d,date_f FROM `formations` AS f INNER JOIN `peridode_etude` AS p ON f.id = p.formation_id INNER JOIN `universite` AS u ON p.universite = u.id  WHERE p.user_id='.$id.' ORDER BY date_d DESC';
@@ -77,14 +63,14 @@ for($i=0;$i<3;$i+=1)
 
 
 //var_dump($_SESSION['profile_pic']);
-echo '<html>
+$html = '<html>
     <head>
         <meta content="text/html; charset=UTF-8" http-equiv="content-type">
-        <link rel="stylesheet" type="text/css"
-        media="screen" href="css/cv1.css" />
+        <style>'.$css.'</style>
     </head>
     <body>
         <div class="c32">
+      
             <p class="c9 c4">
                 <span class="c22"></span>
             </p>
@@ -204,3 +190,7 @@ echo '<html>
         </div>
     </body>
 </html>';
+require_once('pdf.php');
+echo $html;
+
+$conn->close();
