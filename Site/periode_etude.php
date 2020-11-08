@@ -53,7 +53,7 @@ echo '<!DOCTYPE html>
 <img src="img/logo.png" alt="Un magnifique logo" width="257" height="110">
 <p>
 
-<form method="post" action="signup.php">
+<form method="post" action="add_periode_etude.php">
 
      <label for="university">Université: </label>
 

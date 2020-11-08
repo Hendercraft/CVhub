@@ -2,7 +2,6 @@
 
 
 require_once('config.php');
-session_start();
 /**Setting Up the MYSQL Query**/
 $posteList = 'SELECT * from `poste`';
 $enterpriseList = 'SELECT * from `entreprises`';
