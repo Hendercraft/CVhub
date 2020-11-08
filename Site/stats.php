@@ -1,17 +1,22 @@
 <?php
+    // cette partie permet d'afficher les erreurs de php
     ini_set('display_errors', 1);
     ini_set('log_errors',1);
     error_reporting(E_ALL);
     mysqli_report(MYSQLI_REPORT_ERROR | MYSQLI_REPORT_STRICT);
-
+    
     require_once('config.php');
-
+    
+    //supression des anciens graphiques
+    //ils ne peuvent pas être supprimés à la fin du script cars ils se supprimait avant d'être affiché
     unlink('img/graph.png');
     unlink('img/pie.png');
 
+    //assignation d'une recherche à une variable
     $req = 'SELECT COUNT(*) from `users`';
-
-
+    
+    //verifiction de la connexion 
+    //puis execution de la recherche et affection à une variable qui sera ensuite affiché
     if($stmt = $conn->prepare($req)){
         $stmt->execute();
 
