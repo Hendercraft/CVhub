@@ -1,5 +1,5 @@
 <?php
-
+session_start();
 // Initialisation of error reporting functions
 ini_set('display_errors', 1);
 ini_set('log_errors',1);
@@ -24,14 +24,14 @@ $enddate =$_POST['enddate'];
 
 $addecperience = 'INSERT INTO dbcv.experience_pro(user_id,poste_id,entreprise_id,date_d,date_f) VALUES (?,?,?,?,?)'; // SQL query to write to the db
 
-$verify =  'SELECT * from `experience_pro` WHERE (`formations`.user_id LIKE ?) AND (`formations`.poste_id = ?) AND (`formations`.entreprise_id LIKE ?) AND (`formations`.date_d LIKE ?) AND (`formations`.date_f LIKE ?)  '; //SQL query to check if the formation is already in the db
+$verify =  'SELECT * from `experience_pro` WHERE (`experience_pro`.user_id LIKE ?) AND (`experience_pro`.poste_id = ?) AND (`experience_pro`.entreprise_id LIKE ?) AND (`experience_pro`.date_d LIKE ?) AND (`experience_pro`.date_f LIKE ?)  '; //SQL query to check if the formation is already in the db
 
 
 
 
 if($ver = $conn->prepare($verify)){ //If query was properly prepared
 
-    $ver->bind_param('sis',$_SESSION['id'],$poste,$entreprise,$startdate,$enddate); //Replace the ? with the value the value the user provided
+    $ver->bind_param('issss',$_SESSION['id'],$poste,$entreprise,$startdate,$enddate); //Replace the ? with the value the value the user provided
     $ver->execute();
     $ver->store_result();
 
@@ -41,8 +41,8 @@ if($ver = $conn->prepare($verify)){ //If query was properly prepared
 
     }else{
         $ver->close(); //We close the previous request
-        if ($stmt = $conn->prepare($addformation)) { //Preparing the query to add the data
-            $stmt->bind_param('sis',$intitule,$niveau,$spe);//Binding the parameters
+        if ($stmt = $conn->prepare($addecperience)) { //Preparing the query to add the data
+            $stmt->bind_param('issss',$_SESSION['id'],$poste,$entreprise,$startdate,$enddate);//Binding the parameters
 
             $stmt->execute();
 
@@ -62,4 +62,4 @@ set_error_handler(function($number,  $message) {
 
 }
 );
-<?php
+
