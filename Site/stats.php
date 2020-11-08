@@ -7,6 +7,7 @@
     require_once('config.php');
 
     unlink('img/graph.png');
+    unlink('img/pie.png');
 
     $req = 'SELECT COUNT(*) from `users`';
 
@@ -99,7 +100,43 @@
     $accbplot = new AccBarPlot([$bplot,$bplot2]);
     $graph->Add($accbplot);
 
+
+
     // Display the graph
     $graph->Stroke('img/graph.png');
     echo '<img src="img/graph.png">';
+
+    //include needed jpgraph classes
+    require 'jpgraph/jpgraph/jpgraph_pie.php';
+    require 'jpgraph/jpgraph/jpgraph_pie3d.php';
+
+    //image filename to save the chart
+    $fimg ='img/pie.png';
+
+    //set chart data
+    $data =[$nb_enter,$nb_univ,$nb_users];
+
+    $graph = new PieGraph(500,500);
+
+    //customize the chart, using a predefined theme
+    $theme_class= new VividTheme;
+    $graph->SetTheme($theme_class);
+    $graph->SetShadow();
+    
+    $graph->title->Set('P');
+    $graph->title->SetFont(FF_FONT1,FS_BOLD);
+
+    //define data in chart
+    $p1 = new PiePlot3D($data);
+    $p1->SetCenter(0.5);
+    $p1->SetLegends(['Entreprise','Université','Utilisateurs']);
+    $graph->legend->Pos(.088,0.9);
+
+    //add and save the chart
+    $graph->Add($p1);
+    $graph->Stroke($fimg);
+
+    //if image file created, display it
+    if(file_exists($fimg)) echo '<img src="'. $fimg .'" />';
+    else echo 'Unable to create: '. $fimg;
 ?>
