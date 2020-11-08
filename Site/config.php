@@ -39,6 +39,12 @@ if(strtoupper(substr(PHP_OS, 0, 3)) == 'WIN')
     define('CV_Y',__ROOT__.'\cv_yellow.html');
     define('CV_R',__ROOT__.'\cv_red.html');
     define('CV_B',__ROOT__.'\cv_blue.html');
+    define('EXPERIENCE_P',__ROOT__.'\experience.php');
+    define('PERIODE_ETUDE_P',__ROOT__.'\periode_etude.php');
+    define('FORMATION_P',__ROOT__.'\formations.php');
+
+
+
 
 } else { //unix versions
     define('LOGIN_P',__ROOT__.'/login.html');
@@ -54,4 +60,8 @@ if(strtoupper(substr(PHP_OS, 0, 3)) == 'WIN')
     define('CV_Y',__ROOT__.'/cv_yellow.html');
     define('CV_R',__ROOT__.'/cv_red.html');
     define('CV_B',__ROOT__.'/cv_blue.html');
+    define('EXPERIENCE_P',__ROOT__.'/experience.php');
+    define('PERIODE_ETUDE_P',__ROOT__.'/periode_etude.php');
+    define('FORMATION_P',__ROOT__.'/formations.php');
+
 }

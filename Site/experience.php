@@ -59,12 +59,12 @@ echo '<!DOCTYPE html>
      <select id="poste" required="required" name="poste">
         '.$option1.'
      </select>
-     <a href="poste.html"><button type="button">Entrez un nouveaux poste!</button></a>
+     <a href="poste.html"><button type="button">Entrez un nouveau poste!</button></a>
     <br>
     
     <label for="entreprise">Entreprise: </label>
 
-     <select id="entreprise" required="required" name="poste">
+     <select id="entreprise" required="required" name="entreprise">
         '.$option.'
      </select>
     <a href="enterprise.html"><button type="button">Entrez une nouvelle entreprise!</button></a>

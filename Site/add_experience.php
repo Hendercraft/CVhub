@@ -14,34 +14,30 @@ require_once('config.php'); //Calling config.php in order to keep the link to th
 
 /**Variables definition**/
 
-$intitule = $_POST['intitule'];
-$niveau = $_POST['niveau'];
-$spe = $_POST['spe'];
+$poste = $_POST['poste'];
+$entreprise = $_POST['entreprise'];
+$startdate = $_POST['startdate'];
+$enddate =$_POST['enddate'];
 
-
-/**Checking the data**/
-if (!(is_numeric($niveau))){
-    die ("$niveau n'est pas valable, un nombre est attendu");
-}
 
 /**Setting up the SQL requests**/
 
-$addformation = 'INSERT INTO dbcv.formations(intitule,niveau,spe) VALUES (?,?,?)'; // SQL query to write to the db
+$addecperience = 'INSERT INTO dbcv.experience_pro(user_id,poste_id,entreprise_id,date_d,date_f) VALUES (?,?,?,?,?)'; // SQL query to write to the db
 
-$verify =  "SELECT * from `formations` WHERE (`formations`.intitule LIKE ?) AND (`formations`.niveau = ?) AND (`formations`.spe LIKE ?) "; //SQL query to check if the formation is already in the db
+$verify =  'SELECT * from `experience_pro` WHERE (`formations`.user_id LIKE ?) AND (`formations`.poste_id = ?) AND (`formations`.entreprise_id LIKE ?) AND (`formations`.date_d LIKE ?) AND (`formations`.date_f LIKE ?)  '; //SQL query to check if the formation is already in the db
 
 
 
 
 if($ver = $conn->prepare($verify)){ //If query was properly prepared
 
-    $ver->bind_param('sis',$intitule,$niveau,$spe); //Replace the ? with the value the value the user provided
+    $ver->bind_param('sis',$_SESSION['id'],$poste,$entreprise,$startdate,$enddate); //Replace the ? with the value the value the user provided
     $ver->execute();
     $ver->store_result();
 
     if($ver->num_rows !== 0) {
-        echo '<h3 style="color:#ff0000;">Le poste est dejà présent dans la base de données</h3><br>';
-        require_once(FORMATION_P);
+        echo '<h3 style="color:#ff0000;">Vous avez dejà rentrée cette expérience professionnel!</h3><br>';
+        require_once(EXPERIENCE_P);
 
     }else{
         $ver->close(); //We close the previous request
@@ -65,3 +61,4 @@ set_error_handler(function($number,  $message) {
 
 }
 );
+<?php

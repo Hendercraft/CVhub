@@ -2,7 +2,6 @@
 
 
 require_once('config.php');
-session_start();
 /**Setting Up the MYSQL Query**/
 $formationsList = 'SELECT * from `formations`';
 $universityList = 'SELECT * from `universite`';
